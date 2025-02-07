@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFTs - Dolph-Coin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --secondary: #007bff;
+      --dark-blue: #0a192f;
+      --content-bg: #1e2a47;
+      --accent: #2a3a5b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--dark-blue);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+    }
+
+    .header {
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      height: 120px;
+      transition: transform 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: var(--content-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    h1, h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .nft-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .nft-card {
+      background: var(--accent);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .nft-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .nft-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--primary);
+    }
+
+    .nft-info {
+      padding: 1.5rem;
+    }
+
+    .nft-title {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .nft-link {
+      display: block;
+      text-align: center;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .nft-link:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--content-bg);
+      margin-top: 4rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        gap: 1rem;
+      }
+      .logo {
+        height: 90px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <img src="https://i.imgur.com/D8rVVgG.png" alt="Dolph-Coin Logo" class="logo">
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="tokenomics.html">Tokenomics</a>
+        <a href="nfts.html">NFTs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Big-Dolph NFTs</h1>
+    
+    <div class="card">
+      <h2>Exclusive Digital Collectibles</h2>
+      <p>Own a piece of the Dolph-Coin legacy with our limited-edition NFTs. Each collectible offers unique utility and exclusive access within our ecosystem.</p>
+      
+      <div class="nft-gallery">
+        <!-- NFT 1 -->
+        <div class="nft-card">
+          <img src="https://i.imgur.com/G30whrD.png" alt="Golden Dolphin" class="nft-image">
+          <div class="nft-info">
+            <h3 class="nft-title">Big Dolph</h3>
+            <p>Unique, bold, futuristic, collectible, valuable and exclusive access to community events</p>
+            <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/1/" class="nft-link" target="_blank">
+              <i class="fas fa-shopping-cart"></i> Purchase on OpenSea
+            </a>
+          </div>
+        </div>
+
+        <!-- NFT 2 -->
+        <div class="nft-card">
+          <img src="https://i.imgur.com/moPngyl.png" alt="Silver Dolphin" class="nft-image">
+          <div class="nft-info">
+            <h3 class="nft-title">Big Dolph</h3>
+            <p>Unique, bold, futuristic, collectible, valuable and exclusive access to community events</p>
+            <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/2/" class="nft-link" target="_blank">
+              <i class="fas fa-shopping-cart"></i> Purchase on OpenSea
+            </a>
+          </div>
+        </div>
+
+        <!-- NFT 3 -->
+        <div class="nft-card">
+          <img src="https://i.imgur.com/RtWirEr.png" alt="Cyber Dolphin" class="nft-image">
+          <div class="nft-info">
+            <h3 class="nft-title">Big Dolph</h3>
+            <p>Unique, bold, futuristic, collectible, valuable and exclusive access to community events</p>
+            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/27/" class="nft-link" target="_blank">
+              <i class="fas fa-shopping-cart"></i> Purchase on OpenSea
+            </a>
+          </div>
+        </div>
+
+        <!-- NFT 4 -->
+        <div class="nft-card">
+          <img src="https://i.imgur.com/lTO3uj7.png" alt="Neon Dolphin" class="nft-image">
+          <div class="nft-info">
+            <h3 class="nft-title">Big Dolph</h3>
+            <p>Unique, bold, futuristic, collectible, valuable and exclusive access to community events</p>
+            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/26/" class="nft-link" target="_blank">
+              <i class="fas fa-shopping-cart"></i> Purchase on OpenSea
+            </a>
+          </div>
+        </div>
+
+        <!-- NFT 5 -->
+        <div class="nft-card">
+          <img src="https://i.imgur.com/yGmznj0.png" alt="Mecha Dolphin" class="nft-image">
+          <div class="nft-info">
+            <h3 class="nft-title">Big Dolph</h3>
+            <p>Unique, bold, futuristic, collectible, valuable and exclusive access to community events</p>
+            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/25/" class="nft-link" target="_blank">
+              <i class="fas fa-shopping-cart"></i> Purchase on OpenSea
+            </a>
+          </div>
+        </div>
+
+        <!-- NFT 6 -->
+        <div class="nft-card">
+          <img src="https://i.imgur.com/tdjml9u.png" alt="Crystal Dolphin" class="nft-image">
+          <div class="nft-info">
+            <h3 class="nft-title">Big Dolph</h3>
+            <p>Unique, bold, futuristic, collectible, valuable and exclusive access to community events</p>
+            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/2/" class="nft-link" target="_blank">
+              <i class="fas fa-shopping-cart"></i> Purchase on OpenSea
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://x.com/biggestdolph01" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.tiktok.com/@bigdolph3" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.reddit.com/user/Medium-Theme6429/" target="_blank"><i class="fab fa-reddit"></i></a>
+    </div>
+    <p>&copy; 2025 Dolph-Coin. All rights reserved.</p>
+  </footer>
+</body>
+</html>

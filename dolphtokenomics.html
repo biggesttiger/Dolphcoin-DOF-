@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tokenomics - Dolph-Coin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --secondary: #007bff;
+      --dark-blue: #0a192f;
+      --content-bg: #1e2a47;
+      --accent: #2a3a5b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--dark-blue);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+    }
+
+    .header {
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      height: 120px;
+      transition: transform 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: var(--content-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    h1, h2, h3 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .token-card {
+      background: var(--accent);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .token-card h3 {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.5s ease;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    .feature-list li::marker {
+      color: var(--primary);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 3rem 0;
+    }
+
+    .btn {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--content-bg);
+      margin-top: 4rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        gap: 1rem;
+      }
+      .logo {
+        height: 90px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <img src="https://i.imgur.com/D8rVVgG.png" alt="Dolph-Coin Logo" class="logo">
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="tokenomics.html">Tokenomics</a>
+        <a href="nfts.html">NFTs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Dolph-Coin Tokenomics</h1>
+    
+    <div class="card">
+      <h2>Total Supply</h2>
+      <p class="highlight">96 Billion DOF Tokens</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 100%"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Token Allocation</h2>
+      <div class="token-grid">
+        <div class="token-card">
+          <h3><i class="fas fa-users"></i> Community & Ecosystem</h3>
+          <p class="percentage">50% (48B DOF)</p>
+          <ul class="feature-list">
+            <li>Airdrops & Rewards</li>
+            <li>Liquidity Pools</li>
+            <li>Staking & Yield Farming</li>
+            <li>Community Growth</li>
+          </ul>
+        </div>
+
+        <div class="token-card">
+          <h3><i class="fas fa-chart-line"></i> Development & Growth</h3>
+          <p class="percentage">20% (19.2B DOF)</p>
+          <ul class="feature-list">
+            <li>Development Fund</li>
+            <li>Marketing & Partnerships</li>
+          </ul>
+        </div>
+
+        <div class="token-card">
+          <h3><i class="fas fa-users-cog"></i> Team & Advisors</h3>
+          <p class="percentage">15% (14.4B DOF)</p>
+          <ul class="feature-list">
+            <li>Core Team</li>
+            <li>Advisors & Partners</li>
+          </ul>
+        </div>
+
+        <div class="token-card">
+          <h3><i class="fas fa-piggy-bank"></i> Reserve Fund</h3>
+          <p class="percentage">10% (9.6B DOF)</p>
+        </div>
+
+        <div class="token-card">
+          <h3><i class="fas fa-fire"></i> Burn Mechanism</h3>
+          <p class="percentage">5% (4.8B DOF)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key Features</h2>
+      <div class="token-grid">
+        <div class="token-card">
+          <h3><i class="fas fa-coins"></i> Deflationary Model</h3>
+          <p>Regular token burns to increase scarcity</p>
+        </div>
+        <div class="token-card">
+          <h3><i class="fas fa-vote-yea"></i> DAO Governance</h3>
+          <p>Community-driven decision making</p>
+        </div>
+        <div class="token-card">
+          <h3><i class="fas fa-rocket"></i> Utility Integration</h3>
+          <p>Real-world applications and dApps</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <a href="https://t.me/Dof4eva" class="btn" target="_blank">
+        <i class="fab fa-telegram"></i> Join Telegram
+      </a>
+      <a href="https://x.com/biggestdolph01" class="btn" target="_blank">
+        <i class="fab fa-twitter"></i> Follow on X
+      </a>
+      <a href="https://docs.google.com/document/d/1Kduh72ZGdEEElzzfFfI9yR7YfJQv5Ws1/edit" class="btn" target="_blank">
+        <i class="fas fa-file-alt"></i> Whitepaper
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://x.com/biggestdolph01" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.tiktok.com/@bigdolph3" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.reddit.com/user/Medium-Theme6429/" target="_blank"><i class="fab fa-reddit"></i></a>
+    </div>
+    <p>&copy; 2025 Dolph-Coin. All rights reserved.</p>
+  </footer>
+</body>
+</html>
