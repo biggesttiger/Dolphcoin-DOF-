@@ -179,10 +179,34 @@
       width: 100%;
     }
 
+    .swiper-slide {
+      background: var(--content-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .swiper-slide:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
     .swiper-slide img {
       width: 100%;
-      height: auto;
+      height: 250px;
       object-fit: cover;
+    }
+
+    .nft-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .nft-info h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
     }
 
     .swiper-button-next,
@@ -460,6 +484,28 @@
           <div class="nft-info">
             <h4>Big-Dolph #-001</h4>
             <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/2/" class="btn" target="_blank">
+              View on OpenSea
+            </a>
+          </div>
+        </div>
+
+        <!-- NFT 3 -->
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/RtWirEr.png" alt="Cyber Dolphin NFT">
+          <div class="nft-info">
+            <h4>Big Dolph #5746</h4>
+            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/27/" class="btn" target="_blank">
+              View on OpenSea
+            </a>
+          </div>
+        </div>
+
+        <!-- NFT 4 -->
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/lTO3uj7.png" alt="Dolphin King NFT">
+          <div class="nft-info">
+            <h4>Big Dolph #1734</h4>
+            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/26/" class="btn" target="_blank">
               View on OpenSea
             </a>
           </div>
