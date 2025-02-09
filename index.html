@@ -37,6 +37,7 @@
       padding: 1rem 0;
       z-index: 1000;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      min-height: 70px; /* Ensure consistent header height */
     }
 
     .nav {
@@ -69,7 +70,7 @@
       justify-content: center;
       flex-direction: column;
       text-align: center;
-      padding: 0 2rem;
+      padding: 70px 2rem 0 2rem; /* Adjusted for header */
       background: linear-gradient(45deg, var(--dark-blue), var(--accent));
       position: relative;
       overflow: hidden;
@@ -362,10 +363,24 @@
       .hero h1 {
         font-size: 2.5rem;
       }
-      
+
       .nav {
         gap: 1rem;
         padding: 0 1rem;
+      }
+
+      .hero {
+        padding: 60px 1rem 0 1rem; /* Adjusted padding for mobile */
+      }
+
+      .logo {
+        width: 120px; /* Smaller logo for mobile */
+        margin-bottom: 1rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.5rem; /* Smaller buttons for mobile */
+        font-size: 0.9rem;
       }
     }
   </style>
