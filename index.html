@@ -100,56 +100,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .content-section {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .about-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 2rem;
-    }
-
-    .about-text {
-      max-width: 800px;
-      background: var(--content-bg);
-      padding: 2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .about-text p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .card {
-      background: var(--content-bg);
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -168,6 +118,120 @@
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+    }
+
+    .content-section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: var(--content-bg);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .crypto-price-slider {
+      padding: 4rem 2rem;
+      background: var(--dark-blue);
+      text-align: center;
+    }
+
+    .crypto-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--content-bg);
+      padding: 2rem;
+      border-radius: 20px;
+    }
+
+    .crypto-swiper {
+      padding: 2rem;
+    }
+
+    .crypto-slide {
+      background: var(--accent);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .crypto-slide:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .crypto-slide img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .crypto-slide h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .crypto-slide p {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .sm-engagement-section {
+      padding: 5rem 2rem;
+      background: var(--accent);
+      text-align: center;
+    }
+
+    .sm-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .sm-card {
+      background: var(--content-bg);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sm-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .sm-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .sm-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .nft-section {
@@ -260,90 +324,6 @@
       opacity: 0.9;
     }
 
-    .info-slider {
-      padding: 4rem 2rem;
-      background: var(--accent);
-      text-align: center;
-    }
-
-    .info-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--content-bg);
-      padding: 2rem;
-      border-radius: 20px;
-    }
-
-    .info-swiper {
-      padding: 2rem;
-    }
-
-    .info-slide {
-      background: var(--dark-blue);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .info-slide h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .info-slide p {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .crypto-price-slider {
-      padding: 4rem 2rem;
-      background: var(--dark-blue);
-      text-align: center;
-    }
-
-    .crypto-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: var(--content-bg);
-      padding: 2rem;
-      border-radius: 20px;
-    }
-
-    .crypto-swiper {
-      padding: 2rem;
-    }
-
-    .crypto-slide {
-      background: var(--accent);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .crypto-slide:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .crypto-slide img {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 1rem;
-    }
-
-    .crypto-slide h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .crypto-slide p {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
     footer {
       padding: 3rem 2rem;
       background: var(--content-bg);
@@ -387,21 +367,6 @@
         gap: 1rem;
         padding: 0 1rem;
       }
-      
-      .newsletter input {
-        width: 100%;
-        border-radius: 50px;
-        margin-bottom: 1rem;
-      }
-      
-      .newsletter button {
-        width: 100%;
-        border-radius: 50px;
-      }
-
-      .about-text {
-        width: 100%;
-      }
     }
   </style>
 </head>
@@ -423,10 +388,11 @@
       <button class="btn" onclick="joinTelegram()">Join Telegram</button>
       <button class="btn" onclick="readWhitepaper()">Whitepaper</button>
       <button class="btn" onclick="buyDOF()">Buy DOF</button>
+      <a href="sm-engagement.html" class="btn">Social Media Engagement</a>
     </div>
   </section>
 
-  <section id="about" class="content-section">
+  <section class="content-section">
     <h2>About Dolph-Coin</h2>
     <div class="card-grid">
       <div class="card">
@@ -444,6 +410,9 @@
 
   <section class="content-section">
     <h2>Tokenomics Overview</h2>
+    <p style="text-align: center; margin-bottom: 2rem; color: var(--primary); font-weight: bold;">
+      75% of the Liquidity Pool (LP) has been locked on Unicrypt to ensure long-term stability and trust.
+    </p>
     <div class="card-grid">
       <div class="card">
         <h3>Public Sale</h3>
@@ -459,6 +428,12 @@
         <h3>Ecosystem Growth</h3>
         <p class="percentage">15%</p>
         <p>14.4B DOF</p>
+      </div>
+      <div class="card">
+        <h3>Liquidity Pool (LP)</h3>
+        <p class="percentage">75% Locked</p>
+        <p>Locked on Unicrypt</p>
+        <a href="https://unicrypt.network" class="btn" target="_blank">View on Unicrypt</a>
       </div>
     </div>
   </section>
@@ -516,38 +491,6 @@
     </div>
   </section>
 
-  <section class="info-slider">
-    <h2>Real-Time DOF Information</h2>
-    <div class="info-container">
-      <div class="swiper info-swiper">
-        <div class="swiper-wrapper">
-          <!-- Slide 1: Price -->
-          <div class="swiper-slide info-slide">
-            <h3>Current Price</h3>
-            <p><span id="dof-price">Loading...</span></p>
-          </div>
-          <!-- Slide 2: Market Cap -->
-          <div class="swiper-slide info-slide">
-            <h3>Market Cap</h3>
-            <p><span id="dof-market-cap">Loading...</span></p>
-          </div>
-          <!-- Slide 3: 24h Volume -->
-          <div class="swiper-slide info-slide">
-            <h3>24h Trading Volume</h3>
-            <p><span id="dof-volume">Loading...</span></p>
-          </div>
-          <!-- Slide 4: Price Change -->
-          <div class="swiper-slide info-slide">
-            <h3>24h Price Change</h3>
-            <p><span id="dof-price-change">Loading...</span></p>
-          </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </div>
-    </div>
-  </section>
-
   <section class="crypto-price-slider">
     <h2>Real-Time Cryptocurrency Prices</h2>
     <div class="crypto-container">
@@ -557,6 +500,35 @@
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sm-engagement-section">
+    <h2>Boost Your Social Media Presence</h2>
+    <p>
+      Grow your social media accounts with Dolph-Coin's exclusive engagement services. Get real followers, likes, views, and comments for Instagram, YouTube, TikTok, and more. Pay with DOF for exclusive discounts!
+    </p>
+    <div class="sm-grid">
+      <div class="sm-card">
+        <h3>Instagram</h3>
+        <p>Get real followers and likes for Instagram.</p>
+        <button class="btn" onclick="buyService('instagram')">Buy Now</button>
+      </div>
+      <div class="sm-card">
+        <h3>YouTube</h3>
+        <p>Increase your YouTube views and subscribers.</p>
+        <button class="btn" onclick="buyService('youtube')">Buy Now</button>
+      </div>
+      <div class="sm-card">
+        <h3>TikTok</h3>
+        <p>Get more TikTok likes and followers.</p>
+        <button class="btn" onclick="buyService('tiktok')">Buy Now</button>
+      </div>
+      <div class="sm-card">
+        <h3>Twitter</h3>
+        <p>Grow your Twitter audience with real followers.</p>
+        <button class="btn" onclick="buyService('twitter')">Buy Now</button>
       </div>
     </div>
   </section>
@@ -611,8 +583,8 @@
       },
     });
 
-    // Initialize Swiper for info slider
-    var infoSwiper = new Swiper('.info-swiper', {
+    // Initialize Swiper for crypto price slider
+    var cryptoSwiper = new Swiper('.crypto-swiper', {
       loop: true,
       slidesPerView: 1,
       spaceBetween: 30,
@@ -620,8 +592,12 @@
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      },
       autoplay: {
-        delay: 5000,
+        delay: 3000,
         disableOnInteraction: false,
       },
     });
@@ -681,25 +657,6 @@
           `;
           cryptoContainer.appendChild(slide);
         });
-
-        // Initialize Swiper for crypto price slider
-        new Swiper('.crypto-swiper', {
-          loop: true,
-          slidesPerView: 1,
-          spaceBetween: 30,
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-          breakpoints: {
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
-          },
-          autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-          },
-        });
       } catch (error) {
         console.error('Error fetching cryptocurrency prices:', error);
         const cryptoContainer = document.querySelector('.crypto-swiper .swiper-wrapper');
@@ -723,6 +680,10 @@
 
     function buyDOF() {
       alert('Buying options coming soon!');
+    }
+
+    function buyService(service) {
+      alert(`You are purchasing ${service} engagement. Payment options will be displayed.`);
     }
 
     function subscribeNewsletter() {
