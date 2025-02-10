@@ -497,13 +497,11 @@
       color: white;
     }
 
-    .chatbot-input button {
-      padding: 0.8rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+    .dolphin-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
   </style>
 </head>
 <body>
@@ -691,13 +689,13 @@
 
   <!-- Chatbot Container -->
   <div class="chatbot-container">
-    <button class="chatbot-toggle" onclick="toggleChatbot()">
-      <i class="fas fa-robot"></i>
-    </button>
+   <button class="chatbot-toggle" onclick="toggleChatbot()">
+  <img src="https://example.com/dolphin-icon.png" alt="Dolphin Icon" class="dolphin-icon">
+</button>
     <div class="chatbot-window" id="chatbotWindow">
-      <div class="chatbot-header">
-        Dolph-Coin AI Assistant
-      </div>
+     <div class="chatbot-header">
+  Dolph-Coin Dolphin Assistant
+</div>
       <div class="chatbot-messages" id="chatbotMessages">
         <div class="message bot">
           Hi! I'm the Dolph-Coin AI. How can I help you today?
@@ -880,12 +878,9 @@
           },
           body: JSON.stringify({ message }),
         });
-        const data = await response.json();
-        return data.response; // Adjust based on your API response structure
-      } catch (error) {
-        console.error('Error fetching AI response:', error);
-        return 'Sorry, I am unable to process your request at the moment.';
-      }
+     const data = await response.json();
+const aiResponse = `Splash! I'm your Dolphin Assistant. You said: ${message}`;
+return aiResponse; // Adjust based on your API response structure
     }
   </script>
 </body>
