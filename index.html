@@ -6,6 +6,7 @@
   <title>Dolph-Coin | The Future of Crypto</title>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="manifest" href="manifest.json">
   <style>
     :root {
       --primary: #00d4ff;
@@ -878,6 +879,16 @@
         console.error('Error fetching AI response:', error);
         return 'Sorry, I am unable to process your request at the moment.';
       }
+      <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      }).catch(function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+  }
+</script>
     }
   </script>
 </body>
