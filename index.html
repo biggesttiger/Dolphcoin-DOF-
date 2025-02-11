@@ -433,22 +433,25 @@
     }
 
     .chatbot-toggle {
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      background: rgba(0, 212, 255, 0.5); /* Semi-transparent background */
       color: white;
       border: none;
-      border-radius: 0; /* Remove the circular border */
-     width: auto; /* Allow the image to define the width */
-     height: auto; /* Allow the image to define the height */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
       font-size: 24px;
       cursor: pointer;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
+      backdrop-filter: blur(5px); /* Adds a blur effect */
+      border: 1px solid rgba(255, 255, 255, 0.2); /* Light border for contrast */
     }
 
     .chatbot-window {
-width: 360px; /* Increased by 20% from 300px */      background: rgba(30, 42, 71, 0.8); /* Semi-transparent background */
+      width: 300px;
+      background: rgba(30, 42, 71, 0.8); /* Semi-transparent background */
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       display: none;
@@ -457,7 +460,8 @@ width: 360px; /* Increased by 20% from 300px */      background: rgba(30, 42, 71
       position: absolute;
       bottom: 80px;
       right: 0;
-bottom: 96px; /* Increased by 20% from 80px */      border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
+      backdrop-filter: blur(10px); /* Adds a blur effect to the background */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
     }
 
     .chatbot-header {
@@ -735,7 +739,7 @@ bottom: 96px; /* Increased by 20% from 80px */      border: 1px solid rgba(255, 
   <!-- Chatbot Container -->
   <div class="chatbot-container">
     <button class="chatbot-toggle" onclick="toggleChatbot()">
-      <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" />
+      <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" style="width: 40px; height: 40px;" />
     </button>
     <div class="chatbot-window" id="chatbotWindow">
       <div class="chatbot-header">
@@ -900,21 +904,19 @@ bottom: 96px; /* Increased by 20% from 80px */      border: 1px solid rgba(255, 
     }
 
     async function fetchAIResponse(message) {
-      try {
-        // Replace with your AI API endpoint
-        const response = await fetch('https://your-ai-api-endpoint.com/chat', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ message }),
-        });
-        const data = await response.json();
-        return data.response; // Adjust based on your API response structure
-      } catch (error) {
-        console.error('Error fetching AI response:', error);
-        return 'Sorry, I am unable to process your request at the moment.';
-      }
+      // Mock AI response for testing
+      const responses = [
+        "Hello! How can I assist you today?",
+        "I'm here to help with any questions about Dolph-Coin.",
+        "You can ask me about tokenomics, NFTs, or how to buy DOF.",
+        "Let me know if you need more information!",
+      ];
+
+      // Simulate a delay to mimic real API behavior
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Return a random response from the list
+      return responses[Math.floor(Math.random() * responses.length)];
     }
 
     // Download App Function
