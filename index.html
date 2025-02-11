@@ -550,6 +550,56 @@
         bottom: 70px;
       }
     }
+    .login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--content-bg);
+}
+
+.login-container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #000000;
+}
+
+.login-container h2 {
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--secondary);
+}
   </style>
 </head>
 <body>
@@ -570,6 +620,22 @@
       <button class="btn" onclick="readWhitepaper()">Whitepaper</button>
       <button class="btn" onclick="buyDOF()">Buy DOF</button>
     </div>
+    <section class="login-section">
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn">Login</button>
+    </form>
+  </div>
+</section>
   </section>
 
   <section class="content-section">
@@ -935,5 +1001,19 @@
         });
     }
   </script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  
+  // Perform your authentication logic here
+  if (username === 'admin' && password === 'password') {
+    alert('Login successful');
+    // Redirect to another page or perform other actions
+  } else {
+    alert('Invalid credentials');
+  }
+});
 </body>
 </html>
