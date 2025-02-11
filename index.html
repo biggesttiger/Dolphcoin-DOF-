@@ -436,9 +436,9 @@
       background: linear-gradient(45deg, var(--primary), var(--secondary));
       color: white;
       border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
+      border-radius: 0; /* Remove the circular border */
+     width: auto; /* Allow the image to define the width */
+     height: auto; /* Allow the image to define the height */
       font-size: 24px;
       cursor: pointer;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -735,7 +735,7 @@ bottom: 96px; /* Increased by 20% from 80px */      border: 1px solid rgba(255, 
   <!-- Chatbot Container -->
   <div class="chatbot-container">
     <button class="chatbot-toggle" onclick="toggleChatbot()">
-      <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" style="width: 40px; height: 40px;" />
+      <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" />
     </button>
     <div class="chatbot-window" id="chatbotWindow">
       <div class="chatbot-header">
