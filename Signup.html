@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #0a192f; color: #ffffff; text-align: center; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .input-field { margin-bottom: 15px; }
+        .button { background-color: #00d4ff; color: #0a192f; padding: 10px 20px; border: none; cursor: pointer; font-size: 1em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Signup</h1>
+        <form id="signup-form">
+            <div class="input-field"><input type="text" id="username" placeholder="Username" required></div>
+            <div class="input-field"><input type="email" id="email" placeholder="Email" required></div>
+            <div class="input-field"><input type="password" id="password" placeholder="Password" required></div>
+            <div class="input-field"><input type="password" id="confirm-password" placeholder="Confirm Password" required></div>
+            <button type="submit" class="button">Signup</button>
+        </form>
+        <p>Already have an account? <a href="login.html" style="color: #00d4ff;">Login here</a></p>
+    </div>
+</body>
+</html>
