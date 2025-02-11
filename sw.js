@@ -5,7 +5,7 @@ const ASSETS = [
   '/styles.css',
   '/app.js',
   'https://imgur.com/U1v2iKY', // 192x192 icon
-  'https://imgur.com/your-512x512-icon.png' // Replace with your 512x512 icon link
+  'https://imgur.com/h7FS5Bp' // Replace with your 512x512 icon link
 ];
 
 self.addEventListener('install', (event) => {
