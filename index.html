@@ -14,7 +14,7 @@
   <meta name="theme-color" content="#00d4ff" />
 
   <!-- Add iOS Support -->
-  <link rel="apple-touch-icon" href="https://imgur.com/U1v2iKY" />
+  <link rel="apple-touch-icon" href="https://i.imgur.com/0NLj45g.png" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <style>
@@ -449,20 +449,30 @@
 
     .chatbot-window {
       width: 300px;
-      background: var(--content-bg);
+      background: rgba(30, 42, 71, 0.8); /* Semi-transparent background */
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       display: none;
       flex-direction: column;
       overflow: hidden;
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      backdrop-filter: blur(10px); /* Adds a blur effect to the background */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
     }
 
     .chatbot-header {
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      background: rgba(0, 212, 255, 0.8); /* Semi-transparent gradient */
       color: white;
       padding: 1rem;
       text-align: center;
       font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(5px); /* Adds a blur effect to the header */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
     }
 
     .chatbot-messages {
@@ -493,15 +503,52 @@
       flex: 1;
       padding: 0.8rem;
       border: none;
-      background: var(--dark-blue);
+      background: rgba(10, 25, 47, 0.8); /* Semi-transparent input background */
       color: white;
     }
 
-    .dolphin-icon {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
+    .chatbot-input button {
+      padding: 0.8rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .download-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .download-btn i {
+      margin-right: 0.5rem;
+    }
+
+    /* Responsive Chatbot */
+    @media (max-width: 768px) {
+      .chatbot-window {
+        width: 90%;
+        right: 5%;
+        bottom: 70px;
+      }
+
+      .chatbot-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -663,8 +710,8 @@
       <h2>Stay Updated</h2>
       <p>Subscribe for latest news and updates</p>
       <div class="input-group">
-       <input type="email" id="email" name="email" placeholder="Enter your email">
-<button onclick="subscribeNewsletter()">Subscribe</button>
+        <input type="email" placeholder="Enter your email">
+        <button onclick="subscribeNewsletter()">Subscribe</button>
       </div>
     </div>
   </section>
@@ -689,16 +736,19 @@
 
   <!-- Chatbot Container -->
   <div class="chatbot-container">
-   <button class="chatbot-toggle" onclick="toggleChatbot()">
-  <img src="https://example.com/dolphin-icon.png" alt="Dolphin Icon" class="dolphin-icon">
-</button>
+    <button class="chatbot-toggle" onclick="toggleChatbot()">
+      <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" style="width: 40px; height: 40px;" />
+    </button>
     <div class="chatbot-window" id="chatbotWindow">
-     <div class="chatbot-header">
-  Dolph-Coin Dolphin Assistant
-</div>
+      <div class="chatbot-header">
+        Big Dolph AI Assistant
+        <button class="download-btn" onclick="downloadApp()">
+          <i class="fas fa-download"></i> Download App
+        </button>
+      </div>
       <div class="chatbot-messages" id="chatbotMessages">
         <div class="message bot">
-          Hi! I'm the Dolph-Coin AI. How can I help you today?
+          Hi! I'm Big Dolph, your AI assistant. How can I help you today?
         </div>
       </div>
       <div class="chatbot-input">
@@ -818,23 +868,6 @@
     setInterval(fetchDOFInfo, 10000);
     setInterval(fetchCryptoPrices, 10000);
 
-    function readWhitepaper() {
-      window.open('https://1drv.ms/w/s!Au_ooALndhq0aURaGeXO5DdsEh8', '_blank');
-    }
-
-    function buyDOF() {
-      alert('Buying options coming soon!');
-    }
-
-    function subscribeNewsletter() {
-      const email = document.querySelector('.newsletter input').value;
-      if (email) {
-        alert('Thank you for subscribing!');
-      } else {
-        alert('Please enter a valid email address.');
-      }
-    }
-
     // Chatbot Functions
     function toggleChatbot() {
       const chatbotWindow = document.getElementById('chatbotWindow');
@@ -878,9 +911,29 @@
           },
           body: JSON.stringify({ message }),
         });
-     const data = await response.json();
-const aiResponse = `Splash! I'm your Dolphin Assistant. You said: ${message}`;
-return aiResponse; // Adjust based on your API response structure
+        const data = await response.json();
+        return data.response; // Adjust based on your API response structure
+      } catch (error) {
+        console.error('Error fetching AI response:', error);
+        return 'Sorry, I am unable to process your request at the moment.';
+      }
+    }
+
+    // Download App Function
+    function downloadApp() {
+      const appDownloadLink = 'https://your-app-download-link.com';
+      window.open(appDownloadLink, '_blank');
+    }
+
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
     }
   </script>
 </body>
