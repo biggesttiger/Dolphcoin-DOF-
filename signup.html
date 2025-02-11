@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <h1>Signup</h1>
-        <form id="signup-form">
+        <form id="signup-form" onsubmit="event.preventDefault(); location.href='onboarding1.html';">
             <div class="input-field"><input type="text" id="username" placeholder="Username" required></div>
             <div class="input-field"><input type="email" id="email" placeholder="Email" required></div>
             <div class="input-field"><input type="password" id="password" placeholder="Password" required></div>
