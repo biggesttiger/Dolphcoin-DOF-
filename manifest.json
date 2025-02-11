@@ -2,7 +2,7 @@
   "name": "Dolph-Coin",
   "short_name": "Dolph-Coin",
   "description": "The Future of Crypto",
-   "start_url": "/home.html",
+   "start_url": "/signup.html",
   "display": "standalone",
   "background_color": "#0a192f",
   "theme_color": "#00d4ff",
