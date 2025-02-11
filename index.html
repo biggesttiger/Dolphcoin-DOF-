@@ -159,25 +159,29 @@
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
-   .crypto-price-slider {
-    padding: 2rem 1rem; /* Reduced padding by 50% (original was 4rem 2rem) */
+.crypto-price-slider {
+    padding: 2rem 1rem; /* Ensure padding is balanced */
     text-align: center;
 }
 
 .crypto-container {
-    max-width: 600px; /* Reduced max-width by 50% (original was 1200px) */
+    max-width: 1200px; /* Reverted to original width */
+    max-height: 300px; /* Reduced height by 50% */
     margin: 0 auto;
     background: var(--content-bg);
-    padding: 1rem; /* Reduced padding by 50% (original was 2rem) */
+    padding: 2rem; /* Reverted to original padding */
     border-radius: 20px;
+    overflow: hidden; /* Ensures content doesn't overflow */
 }
 
 .crypto-swiper {
-    padding: 1rem; /* Reduced padding by 50% (original was 2rem) */
+    height: 100%;
+    padding: 2rem; /* Reverted to original padding */
 }
 
 .crypto-slide {
-    padding: 1rem; /* Reduced padding by 50% (original was 2rem) */
+    height: 50%; /* Reduced height by 50% */
+    padding: 2rem; /* Reverted to original padding */
 }
 
     .crypto-slide img {
