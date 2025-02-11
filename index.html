@@ -550,7 +550,14 @@
         bottom: 70px;
       }
     }
+      .pwa-only {
+    display: none;
+  }
+  .pwa-mode .pwa-only {
+    display: block;
+  }
   </style>
+  <script src="path/to/dof-wallet-sdk.js"></script>
 </head>
 <body>
   <header class="header">
@@ -560,6 +567,12 @@
       <a href="dolphtokenomics.html">Tokenomics</a>
       <a href="dolphnft.html">NFTs</a>
       <a href="dolphcontactus.html">Contact</a>
+       <!-- Add buttons for wallet interaction -->
+  <button onclick="connectWallet()">Connect Wallet</button>
+ <!-- Add Check Balance button (conditionally displayed) -->
+    <div class="pwa-only">
+      <button onclick="fetchBalance()">Check Balance</button>
+    </div>
     </nav>
   </header>
 
@@ -934,6 +947,10 @@
           console.error('Service Worker registration failed:', error);
         });
     }
+      // Check if the app is running as a PWA
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    document.body.classList.add('pwa-mode');
+  }
   </script>
 </body>
 </html>
