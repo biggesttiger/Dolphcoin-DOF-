@@ -433,20 +433,20 @@
     }
 
     .chatbot-toggle {
-      background: rgba(0, 212, 255, 0.5); /* Semi-transparent background */
-      color: white;
+      background: transparent; /* Remove background */
       border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 24px;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(5px); /* Adds a blur effect */
-      border: 1px solid rgba(255, 255, 255, 0.2); /* Light border for contrast */
+      padding: 0;
+    }
+
+    .chatbot-toggle img {
+      width: 60px; /* Increased size by 20% (original was 50px) */
+      height: 60px; /* Increased size by 20% (original was 50px) */
+      transition: transform 0.3s ease;
+    }
+
+    .chatbot-toggle img:hover {
+      transform: scale(1.1); /* Slight hover effect */
     }
 
     .chatbot-window {
@@ -539,16 +539,15 @@
 
     /* Responsive Chatbot */
     @media (max-width: 768px) {
+      .chatbot-toggle img {
+        width: 50px; /* Slightly smaller for mobile */
+        height: 50px; /* Slightly smaller for mobile */
+      }
+
       .chatbot-window {
         width: 90%;
         right: 5%;
         bottom: 70px;
-      }
-
-      .chatbot-toggle {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
       }
     }
   </style>
@@ -720,7 +719,7 @@
 
   <footer>
     <div class="social-links">
-      <a href="https://x.com/biggestdolph01" target="_blank">
+      <a href="https://x.com/Dolph4evaa" target="_blank">
         <i class="fab fa-twitter"></i>
       </a>
       <a href="https://www.tiktok.com/@bigdolph3" target="_blank">
@@ -739,7 +738,7 @@
   <!-- Chatbot Container -->
   <div class="chatbot-container">
     <button class="chatbot-toggle" onclick="toggleChatbot()">
-      <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" style="width: 40px; height: 40px;" />
+      <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" />
     </button>
     <div class="chatbot-window" id="chatbotWindow">
       <div class="chatbot-header">
