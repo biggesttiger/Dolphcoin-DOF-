@@ -208,20 +208,22 @@
     margin-bottom: 1.5rem;
     color: rgba(255, 255, 255, 0.9);
   }
-  .nft-section {
-    padding: 5rem 2rem;
-    background: var(--accent);
-  }
+ .nft-section {
+  padding: 4rem 1.6rem; /* Reduced padding by 20% */
+  background: var(--accent);
+}
   .swiper-container {
     width: 100%;
   }
   .swiper-slide {
-    background: var(--content-bg);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
+  width: 80%; /* Reduced width by 20% */
+  background: var(--content-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
   .swiper-slide:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
@@ -764,58 +766,75 @@
     </div>
   </section>
 
-  <section class="nft-section">
-    <h2>Exclusive NFT Collection</h2>
-    <div class="swiper nft-container">
-      <div class="swiper-wrapper">
-        <!-- NFT 1 -->
-        <div class="swiper-slide">
-          <img src="https://i.imgur.com/G30whrD.png" alt="Dolphin Warrior NFT">
-          <div class="nft-info">
-            <h4>Big-Dolph</h4>
-            <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/1/" class="btn" target="_blank">
-              View on OpenSea
-            </a>
-          </div>
-        </div>
-
-        <!-- NFT 2 -->
-        <div class="swiper-slide">
-          <img src="https://i.imgur.com/moPngyl.png" alt="Golden Dolphin NFT">
-          <div class="nft-info">
-            <h4>Big-Dolph #-001</h4>
-            <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/2/" class="btn" target="_blank">
-              View on OpenSea
-            </a>
-          </div>
-        </div>
-
-        <!-- NFT 3 -->
-        <div class="swiper-slide">
-          <img src="https://i.imgur.com/RtWirEr.png" alt="Cyber Dolphin NFT">
-          <div class="nft-info">
-            <h4>Big Dolph #5746</h4>
-            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/27/" class="btn" target="_blank">
-              View on OpenSea
-            </a>
-          </div>
-        </div>
-
-        <!-- NFT 4 -->
-        <div class="swiper-slide">
-          <img src="https://i.imgur.com/lTO3uj7.png" alt="Dolphin King NFT">
-          <div class="nft-info">
-            <h4>Big Dolph #1734</h4>
-            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/26/" class="btn" target="_blank">
-              View on OpenSea
-            </a>
-          </div>
+ <section class="nft-section">
+  <h2>Exclusive NFT Collection</h2>
+  <div class="swiper nft-container">
+    <div class="swiper-wrapper">
+      <!-- NFT 1 -->
+      <div class="swiper-slide">
+        <img src="https://i.imgur.com/G30whrD.png" alt="Dolphin Warrior NFT">
+        <div class="nft-info">
+          <h4>Big-Dolph</h4>
+          <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/1/" class="btn" target="_blank">
+            View on OpenSea
+          </a>
         </div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+      <!-- NFT 2 -->
+      <div class="swiper-slide">
+        <img src="https://i.imgur.com/moPngyl.png" alt="Golden Dolphin NFT">
+        <div class="nft-info">
+          <h4>Big-Dolph #-001</h4>
+          <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/2/" class="btn" target="_blank">
+            View on OpenSea
+          </a>
+        </div>
+      </div>
+      <!-- NFT 3 -->
+      <div class="swiper-slide">
+        <img src="https://i.imgur.com/RtWirEr.png" alt="Cyber Dolphin NFT">
+        <div class="nft-info">
+          <h4>Big Dolph #5746</h4>
+          <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/27/" class="btn" target="_blank">
+            View on OpenSea
+          </a>
+        </div>
+      </div>
+      <!-- NFT 4 -->
+      <div class="swiper-slide">
+        <img src="https://i.imgur.com/lTO3uj7.png" alt="Dolphin King NFT">
+        <div class="nft-info">
+          <h4>Big Dolph #1734</h4>
+          <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/26/" class="btn" target="_blank">
+            View on OpenSea
+          </a>
+        </div>
+      </div>
+      <!-- NFT 5 -->
+      <div class="swiper-slide">
+        <img src="https://i.imgur.com/5K3ZAQd.png" alt="Dolphin Explorer NFT">
+        <div class="nft-info">
+          <h4>Big Dolph #2478</h4>
+          <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/24/" class="btn" target="_blank">
+            View on OpenSea
+          </a>
+        </div>
+      </div>
+      <!-- NFT 6 -->
+      <div class="swiper-slide">
+        <img src="https://i.imgur.com/0a4F67E.png" alt="Dolphin Commander NFT">
+        <div class="nft-info">
+          <h4>Big Dolph #3159</h4>
+          <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/31/" class="btn" target="_blank">
+            View on OpenSea
+          </a>
+        </div>
+      </div>
     </div>
-  </section>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
 
 <section class="crypto-price-slider">
   <div class="crypto-prices">
