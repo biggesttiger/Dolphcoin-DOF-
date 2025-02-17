@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News | DolphCoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <style>
+        /* Root Variables */
+        :root {
+            --primary: #00F0FF;
+            --secondary: #0066FF;
+            --background: #0A192F;
+            --card-bg: #112240;
+            --accent: #64FFDA;
+            --text-color: #FFFFFF;
+            --muted-text: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 0.5rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        .container {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .news-section {
+            margin-bottom: 2rem;
+        }
+
+        .news-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .news-article {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        .news-article h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .news-article p {
+            color: var(--muted-text);
+            margin-bottom: 1rem;
+        }
+
+        .news-article a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .news-article a:hover {
+            color: var(--secondary);
+        }
+
+        .news-article .publish-date {
+            font-size: 0.9rem;
+            color: var(--muted-text);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: var(--muted-text);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            header,
+            footer {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Logo">
+            <h1>DolphCoin</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- News Section -->
+        <div class="news-section">
+            <h2>Latest News</h2>
+            <div class="news-article">
+                <h3>DolphCoin reaches new milestone with 1 million active users</h3>
+                <p class="publish-date">Published on February 10, 2025</p>
+                <p>DolphCoin has achieved a significant milestone with over 1 million active users on its platform. This marks a major step forward in the adoption of cryptocurrencies worldwide...</p>
+                <a href="full-article.html">Read more</a>
+            </div>
+            <div class="news-article">
+                <h3>Introducing the Dolph Marketplace – Trade with ease</h3>
+                <p class="publish-date">Published on February 12, 2025</p>
+                <p>The DolphCoin team is excited to announce the launch of the Dolph Marketplace, a platform that allows users to trade DolphCoins effortlessly and securely...</p>
+                <a href="full-article.html">Read more</a>
+            </div>
+            <div class="news-article">
+                <h3>Insights: The future of DolphCoin in decentralized finance</h3>
+                <p class="publish-date">Published on February 15, 2025</p>
+                <p>The future of DolphCoin looks promising as it continues to make strides in the decentralized finance (DeFi) space. Experts predict a surge in demand for DolphCoin as more users recognize its potential...</p>
+                <a href="full-article.html">Read more</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; <span id="currentYear"></span> DolphCoin. All rights reserved.
+    </footer>
+
+    <script>
+        // Insert the current year in the footer dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
