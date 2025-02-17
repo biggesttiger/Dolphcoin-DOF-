@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <title>You're All Set! | DolphCoin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Importing Google Font -->
     <style>
         /* Google Font */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
         :root {
             --primary: #00F0FF;
             --secondary: #0066FF;
@@ -17,7 +14,6 @@
             --background: #0A192F;
             --glass: rgba(21, 42, 77, 0.6);
         }
-
         /* Reset and Base Styles */
         *, *::before, *::after {
             margin: 0;
@@ -25,7 +21,6 @@
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
         }
-
         body {
             min-height: 100vh;
             background: var(--background);
@@ -35,7 +30,6 @@
             padding: 1rem;
             overflow: hidden;
         }
-
         /* Background Logo */
         body::before {
             content: '';
@@ -49,7 +43,6 @@
             opacity: 0.05;
             z-index: 0;
         }
-
         /* Container Styles */
         .container {
             position: relative;
@@ -64,27 +57,23 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
         }
-
         .logo {
             width: 80px;
             margin: 0 auto 1.5rem;
             filter: drop-shadow(0 0 8px var(--primary));
         }
-
         h1 {
             color: white;
             font-size: 2rem;
             margin-bottom: 1rem;
             font-weight: 600;
         }
-
         p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 2rem;
         }
-
         /* Button Styles */
         .button {
             margin-top: 2rem;
@@ -98,12 +87,10 @@
             transition: transform 0.2s ease, opacity 0.2s ease;
             font-size: 1rem;
         }
-
         .button:hover {
             opacity: 0.9;
             transform: translateY(-1px);
         }
-
         /* Progress Indicator */
         .progress {
             margin-top: 2rem;
@@ -111,19 +98,16 @@
             justify-content: center;
             gap: 0.5rem;
         }
-
         .progress-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
         }
-
         .progress-dot.active {
             background: var(--primary);
             border: 2px solid white;
         }
-
         @media (max-width: 480px) {
             .container {
                 padding: 2rem 1.5rem;
@@ -145,7 +129,6 @@
         <h1>You're All Set!</h1>
         <p>You're now ready to use Dolph-Coin.</p>
         <button class="button" onclick="finishOnboarding()">Finish</button>
-
         <!-- Progress Indicator -->
         <div class="progress">
             <div class="progress-dot"></div>
@@ -153,7 +136,6 @@
             <div class="progress-dot active"></div>
         </div>
     </div>
-
     <script>
         function finishOnboarding() {
             window.location.href = 'home.html';
