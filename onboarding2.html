@@ -2,19 +2,242 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Features | DolphCoin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onboarding 2</title>
+
+    <!-- Importing Google Font -->
     <style>
-        body { font-family: Arial, sans-serif; background-color: #0a192f; color: #ffffff; text-align: center; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; }
-        .button { background-color: #00d4ff; color: #0a192f; padding: 10px 20px; border: none; cursor: pointer; font-size: 1em; }
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #00F0FF;
+            --secondary: #0066FF;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --background: #0A192F;
+            --glass: rgba(21, 42, 77, 0.6);
+        }
+
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--background);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow: hidden;
+        }
+
+        /* Background Logo */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: url('https://i.imgur.com/0NLj45g.png') no-repeat center/contain;
+            width: 300px;
+            height: 300px;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        /* Container Styles */
+        .container {
+            position: relative;
+            z-index: 1;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 80px;
+            margin: 0 auto 1.5rem;
+            filter: drop-shadow(0 0 8px var(--primary));
+        }
+
+        h1 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-item h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Button Styles */
+        .button {
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            background: var(--gradient);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Progress Indicator */
+        .progress {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .progress-dot.active {
+            background: var(--primary);
+            border: 2px solid white;
+        }
+
+        /* Responsive Grid */
+        @media (min-width: 600px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .features {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 2rem 1.5rem;
+                border-radius: 16px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Get Started with Dolph-Coin</h1>
-        <p>Guidance on getting started.</p>
-        <button class="button" onclick="location.href='onboarding3.html'">Next</button>
+        <!-- Logo -->
+        <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Logo" class="logo">
+        <h1>Explore Our Features</h1>
+        <p>Experience the best of cryptocurrency with our cutting-edge platform:</p>
+
+        <div class="features">
+            <div class="feature-item">
+                <span class="icon">🚀</span>
+                <h2>Fast Transactions</h2>
+                <p>Instant transfers with minimal fees, so you can trade without delays.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">🔒</span>
+                <h2>Secure Wallet</h2>
+                <p>Your assets are protected with top-tier encryption and security protocols.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">🌐</span>
+                <h2>Global Access</h2>
+                <p>Seamlessly connect with users around the world, anytime, anywhere.</p>
+            </div>
+            <div class="feature-item">
+                <span class="icon">🛍️</span>
+                <h2>Dolph Marketplace</h2>
+                <p>Access a vibrant marketplace to trade, buy, and sell with our community.</p>
+            </div>
+        </div>
+
+        <button class="button" onclick="nextPage()">Next</button>
+
+        <!-- Progress Indicator -->
+        <div class="progress">
+            <div class="progress-dot"></div>
+            <div class="progress-dot active"></div>
+            <div class="progress-dot"></div>
+        </div>
     </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = 'onboarding3.html';
+        }
+    </script>
 </body>
 </html>
