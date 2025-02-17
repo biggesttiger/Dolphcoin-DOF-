@@ -77,7 +77,7 @@
         }
 
         nav ul li a:hover {
-            color: var(--accent);
+            color: var (--accent);
         }
 
         /* Main Content */
@@ -306,15 +306,14 @@
                     <div class="error" id="addressError"></div>
                 </div>
                 <div class="form-group">
+                    <button type="button" id="startScannerButton">Scan QR Code</button>
+                    <div id="qr-reader" style="width:300px"></div>
+                </div>
+                <div class="form-group">
                     <label for="sendAmount">Amount to Send (DOF)</label>
                     <input type="number" id="sendAmount" name="sendAmount" placeholder="Enter amount" required min="0">
                     <div class="error" id="amountError"></div>
                 </div>
-                <!-- Optional: Note/Message Field -->
-                <!-- <div class="form-group">
-                    <label for="transactionNote">Add a Note (Optional)</label>
-                    <textarea id="transactionNote" name="transactionNote" rows="3" placeholder="Enter a message or note"></textarea>
-                </div> -->
                 <button type="submit">Send DolphCoin</button>
             </form>
             <div class="success-message" id="successMessage">
@@ -342,6 +341,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
     <script>
         // Current Balance
         const currentBalanceElement = document.getElementById('currentBalance');
@@ -393,6 +393,31 @@
                 confirmAddress.textContent = recipientAddress.value.trim();
                 confirmationModal.classList.add('active');
             }
+        });
+
+        // QR Code Scanner
+        document.getElementById('startScannerButton').addEventListener('click', function() {
+            const qrReader = new Html5Qrcode("qr-reader");
+            qrReader.start(
+                { facingMode: "environment" },
+                {
+                    fps: 10,
+                    qrbox: 250
+                },
+                qrCodeMessage => {
+                    document.getElementById('recipientAddress').value = qrCodeMessage;
+                    qrReader.stop().then(ignore => {
+                        document.getElementById('qr-reader').innerHTML = '';
+                    }).catch(err => {
+                        console.error(err);
+                    });
+                },
+                errorMessage => {
+                    console.warn(`QR Code no longer in front of camera.`);
+                })
+            .catch(err => {
+                console.error(`Unable to start scanning, error: ${err}`);
+            });
         });
 
         // Confirmation Modal Actions
