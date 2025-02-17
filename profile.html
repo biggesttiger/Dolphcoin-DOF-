@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile | DolphCoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <style>
+        :root {
+            --primary: #00F0FF;
+            --secondary: #0066FF;
+            --background: #0A192F;
+            --card-bg: #112240;
+            --accent: #64FFDA;
+            --text-color: #FFFFFF;
+            --muted-text: rgba(255, 255, 255, 0.6);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 0.5rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .profile-info label {
+            font-weight: 600;
+            color: var(--muted-text);
+        }
+
+        .profile-info span {
+            font-size: 1rem;
+        }
+
+        .edit-profile-button,
+        .logout-button {
+            padding: 0.75rem;
+            background: var(--primary);
+            border: none;
+            color: var(--background);
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .edit-profile-button:hover,
+        .logout-button:hover {
+            background: var(--secondary);
+        }
+
+        .activity-log {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .activity-log h4 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-log div {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+
+        .activity-log div i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        footer {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: var(--muted-text);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Logo">
+            <h1>DolphCoin</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h3>Profile</h3>
+            <div class="profile-details">
+                <div class="profile-header">
+                    <img src="https://i.imgur.com/0NLj45g.png" alt="User Avatar">
+                    <div class="profile-info">
+                        <div>
+                            <label>Username:</label>
+                            <span id="username">JohnDoe123</span>
+                        </div>
+                        <div>
+                            <label>Email:</label>
+                            <span id="email">johndoe@example.com</span>
+                        </div>
+                        <div>
+                            <label>Joined:</label>
+                            <span id="joinedDate">January 1, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="edit-profile-button" onclick="editProfile()">Edit Profile</button>
+                <button class="logout-button" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Recent Activity</h3>
+            <div class="activity-log">
+                <h4>Recent Transactions</h4>
+                <div>
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Sent 100 DLP to User123 on 2025-02-15</span>
+                </div>
+                <div>
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Received 50 DLP from User456 on 2025-02-14</span>
+                </div>
+                <h4>Account Activity</h4>
+                <div>
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Logged in from IP 192.168.1.1 on 2025-02-17</span>
+                </div>
+                <div>
+                    <i class="fas fa-cog"></i>
+                    <span>Changed password on 2025-02-16</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; <span id="currentYear"></span>2025 DolphCoin. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function editProfile() {
+            // Redirect to edit profile page
+            window.location.href = 'edit_profile.html';
+        }
+
+        function logout() {
+            // Clear user session and redirect to login page
+            alert('You have been logged out.');
+            // Example: window.location.href = 'login.html';
+        }
+
+        // Mock user data
+        const userData = {
+            username: 'JohnDoe123',
