@@ -58,6 +58,10 @@
             border: 2px solid var(--accent);
             background: var(--dark-blue);
             color: white;
+            transition: border-color 0.3s ease;
+        }
+        .input-field input:focus {
+            border-color: var(--primary);
         }
         .button {
             background-color: var(--primary);
@@ -75,6 +79,14 @@
         a {
             color: var(--primary);
             text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
