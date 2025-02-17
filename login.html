@@ -2,24 +2,189 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Login | DolphCoin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #0a192f; color: #ffffff; text-align: center; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; } 
-        .input-field { margin-bottom: 15px; }
-        .button { background-color: #00d4ff; color: #0a192f; padding: 10px 20px; border: none; cursor: pointer; font-size: 1em; }
+        /* Importing Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #00F0FF;
+            --secondary: #0066FF;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --background: #0A192F;
+            --glass: rgba(21, 42, 77, 0.6);
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--background);
+            position: relative;
+            display: grid;
+            place-items: center;
+            padding: 1rem;
+        }
+
+        /* Background Logo */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: url('https://i.imgur.com/0NLj45g.png') center/contain no-repeat;
+            width: 200px;
+            height: 200px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Overlay */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            z-index: 0;
+        }
+
+        /* Container Styles */
+        .container {
+            position: relative;
+            z-index: 1;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 440px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Logo Styles */
+        .logo {
+            width: 80px;
+            margin: 0 auto 1.5rem;
+            filter: drop-shadow(0 0 8px var(--primary));
+        }
+
+        h1 {
+            color: white;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.2);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Button Styles */
+        .button {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            background: var(--gradient);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Links and Misc */
+        .links {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Login</h1>
+        <!-- Logo Image -->
+        <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Logo" class="logo">
+        <h1>Welcome Back</h1>
         <form id="login-form">
-            <div class="input-field"><input type="text" id="username" placeholder="Username or Email" required></div>
-            <div class="input-field"><input type="password" id="password" placeholder="Password" required></div>
+            <div class="form-group">
+                <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" required>
+            </div>
             <button type="submit" class="button">Login</button>
         </form>
-        <p>Don't have an account? <a href="signup.html" style="color: #00d4ff;">Signup here</a></p>
+        <div class="links">
+            Don't have an account? <a href="signup.html">Sign Up</a>
+        </div>
     </div>
+
+    <script>
+        // Form submission logic
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add validation checks or backend integration here
+            window.location.href = 'dashboard.html';
+        });
+    </script>
 </body>
 </html>
