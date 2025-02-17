@@ -335,7 +335,7 @@
             <div class="wallet-address">
                 <h3>Your Wallet Address</h3>
                 <div class="address">
-                    <span id="walletAddress">DLP1234567890abcdefDLP1234567890abcdef</span>
+                    <span id="walletAddress">DOF1234567890abcdefDOF1234567890abcdef</span>
                     <button onclick="copyAddress()"><i class="fas fa-copy"></i></button>
                 </div>
                 <div class="qr-code">
@@ -376,19 +376,16 @@
 
     <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Include QRCode.js library -->
+    <!-- Include QRious.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script>
-        // Replace [User's Name] with the actual user's name if needed
-        // For consistency, you might want to include a personalized greeting
-
         // Update the balance to show DolphCoin with logo
         const balanceElement = document.getElementById('balanceAmount');
         let currentBalance = 1234567; // Example balance
-        balanceElement.textContent = `${currentBalance.toLocaleString()} DLP`;
+        balanceElement.textContent = `${currentBalance.toLocaleString()} DOF`;
 
         // Wallet Address
-        const walletAddress = 'DLP1234567890abcdefDLP1234567890abcdef'; // Example wallet address
+        const walletAddress = 'DOF1234567890abcdefDOF1234567890abcdef'; // Example wallet address
         document.getElementById('walletAddress').textContent = walletAddress;
 
         // Generate QR Code
@@ -433,7 +430,7 @@
                 labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                 datasets: [{
                     label: 'Balance',
-                    data: [1200000, 1250000, 1230000, 1270000, 1300000, 1280000, 1234567],
+                    data: [1200000, 1250000, 1230000, 1270000, 1300000, 1280000, currentBalance],
                     backgroundColor: 'rgba(0, 240, 255, 0.2)',
                     borderColor: 'rgba(0, 240, 255, 1)',
                     borderWidth: 2,
@@ -461,30 +458,30 @@
         // Sample Transaction History Data
         const transactions = [
             {
-                date: '2023-10-25 14:30',
+                date: '2025-10-25 14:30',
                 type: 'Received',
-                amount: '+500 DLP',
+                amount: '+500 DOF',
                 status: 'Confirmed',
                 statusClass: 'success',
             },
             {
-                date: '2023-10-24 09:15',
+                date: '2025-10-24 09:15',
                 type: 'Sent',
-                amount: '-250 DLP',
+                amount: '-250 DOF',
                 status: 'Pending',
                 statusClass: 'pending',
             },
             {
-                date: '2023-10-23 18:45',
+                date: '2025-10-23 18:45',
                 type: 'Received',
-                amount: '+750 DLP',
+                amount: '+750 DOF',
                 status: 'Confirmed',
                 statusClass: 'success',
             },
             {
-                date: '2023-10-22 12:05',
+                date: '2025-10-22 12:05',
                 type: 'Sent',
-                amount: '-100 DLP',
+                amount: '-100 DOF',
                 status: 'Failed',
                 statusClass: 'failed',
             },
@@ -520,5 +517,9 @@
         });
 
     </script>
+
+    <!-- AI Chatbot Integration -->
+    <script src="//code.tidio.co/your-chatbot-script.js" async></script>
 </body>
 </html>
+
