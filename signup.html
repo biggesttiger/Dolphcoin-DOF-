@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | DolphCoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Importing Google Font */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
@@ -15,6 +16,7 @@
             --glass: rgba(21, 42, 77, 0.6);
         }
 
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -24,13 +26,28 @@
 
         body {
             min-height: 100vh;
-            background: var(--background) url('dolphcoin-logo.png') center/contain no-repeat;
+            background: var(--background);
             position: relative;
             display: grid;
             place-items: center;
             padding: 1rem;
         }
 
+        /* Background Logo */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: url('https://i.imgur.com/0NLj45g.png') center/contain no-repeat;
+            width: 200px;
+            height: 200px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Overlay */
         body::after {
             content: '';
             position: absolute;
@@ -42,6 +59,7 @@
             z-index: 0;
         }
 
+        /* Container Styles */
         .container {
             position: relative;
             z-index: 1;
@@ -55,9 +73,10 @@
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
         }
 
+        /* Logo Styles */
         .logo {
-            width: 48px;
-            margin: 0 auto 2rem;
+            width: 80px;
+            margin: 0 auto 1.5rem;
             filter: drop-shadow(0 0 8px var(--primary));
         }
 
@@ -69,6 +88,7 @@
             font-weight: 600;
         }
 
+        /* Form Styles */
         .form-group {
             margin-bottom: 1.5rem;
             position: relative;
@@ -95,6 +115,7 @@
             color: rgba(255, 255, 255, 0.4);
         }
 
+        /* Button Styles */
         .button {
             width: 100%;
             padding: 1rem;
@@ -113,6 +134,7 @@
             transform: translateY(-1px);
         }
 
+        /* Links and Misc */
         .links {
             text-align: center;
             margin-top: 1.5rem;
@@ -132,12 +154,12 @@
             text-align: left;
         }
 
+        /* Responsive Styles */
         @media (max-width: 480px) {
             .container {
                 padding: 1.5rem;
                 border-radius: 16px;
             }
-            
             h1 {
                 font-size: 1.5rem;
             }
@@ -146,7 +168,8 @@
 </head>
 <body>
     <div class="container">
-        <img src="dolphcoin-icon.svg" alt="DolphCoin Logo" class="logo">
+        <!-- Logo Image -->
+        <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Logo" class="logo">
         <h1>Create Account</h1>
         <form id="signup-form">
             <div class="form-group">
@@ -171,10 +194,10 @@
     </div>
 
     <script>
-        // Add form validation and submission logic here
+        // Form submission logic
         document.getElementById('signup-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            // Add validation checks
+            // Add validation checks or backend integration here
             window.location.href = 'onboarding1.html';
         });
     </script>
