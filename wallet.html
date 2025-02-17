@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wallet | DolphCoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <style>
+        /* Root Variables */
+        :root {
+            --primary: #00F0FF;
+            --secondary: #0066FF;
+            --background: #0A192F;
+            --card-bg: #112240;
+            --accent: #64FFDA;
+            --text-color: #FFFFFF;
+            --muted-text: rgba(255, 255, 255, 0.6);
+            --danger: #FF4B5C;
+            --success: #28C76F;
+        }
+
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 0.5rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        .container {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Balance Overview */
+        .balance-overview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .balance-overview .balance-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .balance-card .balance {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .balance-card .balance img {
+            width: 40px;
+            height: 40px;
+            margin-right: 0.5rem;
+        }
+
+        .balance-card .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .balance-card .actions button {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            border: none;
+            color: var(--background);
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .balance-card .actions button:hover {
+            background: var(--secondary);
+        }
+
+        /* Wallet Address */
+        .wallet-address {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .wallet-address h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .wallet-address .address {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .wallet-address .address button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        .wallet-address .qr-code {
+            margin-top: 1rem;
+        }
+
+        .wallet-address .qr-code img {
+            width: 150px;
+            height: 150px;
+        }
+
+        /* Portfolio Charts */
+        .portfolio-charts {
+            margin-bottom: 2rem;
+        }
+
+        .portfolio-charts h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Transaction History */
+        .transaction-history {
+            margin-bottom: 2rem;
+        }
+
+        .transaction-history h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .transaction-history table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .transaction-history th, .transaction-history td {
+            padding: 1rem;
+            text-align: left;
+            color: var(--text-color);
+        }
+
+        .transaction-history th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+        }
+
+        .transaction-history tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .transaction-history tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status.success {
+            color: var(--success);
+        }
+
+        .status.pending {
+            color: var(--accent);
+        }
+
+        .status.failed {
+            color: var(--danger);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: var(--muted-text);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .balance-card {
+                padding: 1.5rem;
+            }
+
+            .balance-card .balance {
+                font-size: 2rem;
+            }
+
+            .wallet-address .address {
+                font-size: 1rem;
+            }
+
+            .transaction-history table {
+                font-size: 0.9rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Logo">
+            <h1>DolphCoin</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Page Title -->
+        <h2>Your Wallet</h2>
+
+        <!-- Balance Overview -->
+        <div class="balance-overview">
+            <div class="balance-card">
+                <div class="balance">
+                    <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Icon">
+                    <span id="balanceAmount">1,234,567 DLP</span>
+                </div>
+                <div class="actions">
+                    <button onclick="sendCoins()"><i class="fas fa-paper-plane"></i> Send</button>
+                    <button onclick="receiveCoins()"><i class="fas fa-download"></i> Receive</button>
+                    <button onclick="swapCoins()"><i class="fas fa-exchange-alt"></i> Swap</button>
+                </div>
+            </div>
+
+            <!-- Wallet Address -->
+            <div class="wallet-address">
+                <h3>Your Wallet Address</h3>
+                <div class="address">
+                    <span id="walletAddress">DLP1234567890abcdefDLP1234567890abcdef</span>
+                    <button onclick="copyAddress()"><i class="fas fa-copy"></i></button>
+                </div>
+                <div class="qr-code">
+                    <img id="qrCodeImage" src="" alt="QR Code">
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Charts -->
+        <div class="portfolio-charts">
+            <h3>Balance Over Time</h3>
+            <canvas id="balanceChart"></canvas>
+        </div>
+
+        <!-- Transaction History -->
+        <div class="transaction-history">
+            <h3>Transaction History</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date &amp; Time</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionTableBody">
+                    <!-- Transactions will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; <span id="currentYear"></span> DolphCoin. All rights reserved.
+    </footer>
+
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include QRCode.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+        // Replace [User's Name] with the actual user's name if needed
+        // For consistency, you might want to include a personalized greeting
+
+        // Update the balance to show DolphCoin with logo
+        const balanceElement = document.getElementById('balanceAmount');
+        let currentBalance = 1234567; // Example balance
+        balanceElement.textContent = `${currentBalance.toLocaleString()} DLP`;
+
+        // Wallet Address
+        const walletAddress = 'DLP1234567890abcdefDLP1234567890abcdef'; // Example wallet address
+        document.getElementById('walletAddress').textContent = walletAddress;
+
+        // Generate QR Code
+        const qr = new QRious({
+            element: document.getElementById('qrCodeImage'),
+            value: walletAddress,
+            size: 150,
+            background: 'transparent',
+            foreground: '#00F0FF',
+        });
+
+        // Copy Wallet Address
+        function copyAddress() {
+            navigator.clipboard.writeText(walletAddress).then(function() {
+                alert('Wallet address copied to clipboard!');
+            }, function(err) {
+                alert('Failed to copy wallet address.');
+            });
+        }
+
+        // Action Button Functions
+        function sendCoins() {
+            window.location.href = 'send.html';
+        }
+
+        function receiveCoins() {
+            window.location.href = 'receive.html';
+        }
+
+        function swapCoins() {
+            window.location.href = 'home.html#swap';
+        }
+
+        // Insert the current year in the footer dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Portfolio Chart
+        const balanceCtx = document.getElementById('balanceChart').getContext('2d');
+        const balanceChart = new Chart(balanceCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Balance',
+                    data: [1200000, 1250000, 1230000, 1270000, 1300000, 1280000, 1234567],
+                    backgroundColor: 'rgba(0, 240, 255, 0.2)',
+                    borderColor: 'rgba(0, 240, 255, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(0, 240, 255, 1)',
+                    tension: 0.3,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        ticks: { color: getComputedStyle(document.documentElement).getPropertyValue('--text-color') },
+                        grid: { display: false },
+                    },
+                    y: {
+                        ticks: { color: getComputedStyle(document.documentElement).getPropertyValue('--text-color') },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Sample Transaction History Data
+        const transactions = [
+            {
+                date: '2023-10-25 14:30',
+                type: 'Received',
+                amount: '+500 DLP',
+                status: 'Confirmed',
+                statusClass: 'success',
+            },
+            {
+                date: '2023-10-24 09:15',
+                type: 'Sent',
+                amount: '-250 DLP',
+                status: 'Pending',
+                statusClass: 'pending',
+            },
+            {
+                date: '2023-10-23 18:45',
+                type: 'Received',
+                amount: '+750 DLP',
+                status: 'Confirmed',
+                statusClass: 'success',
+            },
+            {
+                date: '2023-10-22 12:05',
+                type: 'Sent',
+                amount: '-100 DLP',
+                status: 'Failed',
+                statusClass: 'failed',
+            },
+            // Add more transactions as needed
+        ];
+
+        // Populate Transaction History Table
+        const transactionTableBody = document.getElementById('transactionTableBody');
+
+        transactions.forEach(tx => {
+            const row = document.createElement('tr');
+
+            const dateCell = document.createElement('td');
+            dateCell.textContent = tx.date;
+            row.appendChild(dateCell);
+
+            const typeCell = document.createElement('td');
+            typeCell.textContent = tx.type;
+            row.appendChild(typeCell);
+
+            const amountCell = document.createElement('td');
+            amountCell.textContent = tx.amount;
+            row.appendChild(amountCell);
+
+            const statusCell = document.createElement('td');
+            const statusDiv = document.createElement('div');
+            statusDiv.classList.add('status', tx.statusClass);
+            statusDiv.innerHTML = `<i class="fas fa-circle"></i> ${tx.status}`;
+            statusCell.appendChild(statusDiv);
+            row.appendChild(statusCell);
+
+            transactionTableBody.appendChild(row);
+        });
+
+    </script>
+</body>
+</html>
