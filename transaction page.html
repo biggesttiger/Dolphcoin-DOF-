@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transactions | DolphCoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <style>
+        /* Root Variables */
+        :root {
+            --primary: #00F0FF;
+            --secondary: #0066FF;
+            --background: #0A192F;
+            --card-bg: #112240;
+            --accent: #64FFDA;
+            --text-color: #FFFFFF;
+            --muted-text: rgba(255, 255, 255, 0.6);
+            --danger: #FF4B5C;
+            --success: #28C76F;
+        }
+
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 0.5rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        .container {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Filters and Search */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filters .filter-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filters label {
+            color: var(--muted-text);
+            font-weight: 500;
+        }
+
+        .filters input[type="date"],
+        .filters select {
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+        }
+
+        .filters input[type="date"]:focus,
+        .filters select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .filters .search-bar {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .filters .search-bar input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            padding-left: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+        }
+
+        .filters .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .filters .search-bar i {
+            position: absolute;
+            top: 50%;
+            left: 0.75rem;
+            transform: translateY(-50%);
+            color: var(--muted-text);
+        }
+
+        /* Transactions Table */
+        .transactions-table {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            color: var(--text-color);
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status.success {
+            color: var(--success);
+        }
+
+        .status.pending {
+            color: var(--accent);
+        }
+
+        .status.failed {
+            color: var(--danger);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .pagination button {
+            padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            border: none;
+            color: var(--text-color);
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .pagination button:hover {
+            background: var(--primary);
+        }
+
+        .pagination button.active {
+            background: var(--primary);
+            color: var(--background);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: var(--muted-text);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filters .search-bar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Logo">
+            <h1>DolphCoin</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Transaction History</h2>
+
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-group">
+                <label for="dateFrom">From:</label>
+                <input type="date" id="dateFrom">
+                <label for="dateTo">To:</label>
+                <input type="date" id="dateTo">
+            </div>
+            <div class="filter-group">
+                <label for="transactionType">Type:</label>
+                <select id="transactionType">
+                    <option value="all">All</option>
+                    <option value="sent">Sent</option>
+                    <option value="received">Received</option>
+                    <option value="swapped">Swapped</option>
+                </select>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search by transaction ID or address">
+            </div>
+        </div>
+
+        <!-- Transactions Table -->
+        <div class="transactions-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date &amp; Time</th>
+                        <th>Transaction ID</th>
+                        <th>Type</th>
+                        <th>Amount (DOF)</th>
+                        <th>Recipient/Sender</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionTableBody">
+                    <!-- Transactions will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; <span id="currentYear"></span> DolphCoin. All rights reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Insert the current year in the footer dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Sample Transactions Data
+        const transactions = [
+            {
+                date: '2025-10-25 14:30',
+                txId: 'TX1234567890',
+                type: 'Received',
+                amount: 500,
+                party: 'DOFabc1234567890',
+                status: 'Confirmed',
+                statusClass: 'success',
+            },
+            {
+                date: '2025-10-24 09:15',
+                txId: 'TX0987654321',
+                type: 'Sent',
+                amount: 250,
+                party: 'DOFxyz0987654321',
+                status: 'Pending',
+                statusClass: 'pending',
+            },
+            // Add more transactions as needed
+        ];
+
+        // Elements
+        const transactionTableBody = document.getElementById('transactionTableBody');
+        const dateFrom = document.getElementById('dateFrom');
+        const dateTo = document.getElementById('dateTo');
+        const transactionType = document.getElementById('transactionType');
+        const searchInput = document.getElementById('searchInput');
+        const pagination = document.getElementById('pagination');
+
+        let filteredTransactions = transactions;
+        let currentPage = 1;
+        const rowsPerPage = 10;
+
+        // Functions
+        function displayTransactions(page = 1) {
+            transactionTableBody.innerHTML = '';
+            let start = (page - 1) * rowsPerPage;
+            let end = start + rowsPerPage;
+            let paginatedTransactions = filteredTransactions.slice(start, end);
+
+            paginatedTransactions.forEach(tx => {
+                const row = document.createElement('tr');
+                row.addEventListener('click', () => showTransactionDetails(tx));
+
+                row.innerHTML = `
+                    <td>${tx.date}</td>
+                    <td>${tx.txId}</td>
+                    <td>${tx.type}</td>
+                    <td>${tx.amount.toLocaleString()}</td>
+                    <td>${tx.party}</td>
+                    <td>
+                        <div class="status ${tx.statusClass}">
+                            <i class="fas fa-circle"></i> ${tx.status}
+                        </div>
+                    </td>
+                `;
+                transactionTableBody.appendChild(row);
+            });
+
+            setupPagination();
+        }
+
+        function setupPagination() {
+            pagination.innerHTML = '';
+            let pageCount = Math.ceil(filteredTransactions.length / rowsPerPage);
+            for (let i = 1; i <= pageCount; i++) {
+                let btn = document.createElement('button');
+                btn.textContent = i;
+                if (i === currentPage) btn.classList.add('active');
+                btn.addEventListener('click', () => {
+                    currentPage = i;
+                    displayTransactions(currentPage);
+                });
+                pagination.appendChild(btn);
+            }
+        }
+
+        function applyFilters() {
+            let fromDate = dateFrom.value ? new Date(dateFrom.value) : null;
+            let toDate = dateTo.value ? new Date(dateTo.value) : null;
+            let type = transactionType.value;
+            let searchTerm = searchInput.value.toLowerCase();
+
+            filteredTransactions = transactions.filter(tx => {
+                let txDate = new Date(tx.date);
+                let dateMatch = true;
+                let typeMatch = true;
+                let searchMatch = true;
+
+                if (fromDate && txDate < fromDate) dateMatch = false;
+                if (toDate && txDate > toDate) dateMatch = false;
+                if (type !== 'all' && tx.type.toLowerCase() !== type) typeMatch = false;
+                if (searchTerm && !tx.txId.toLowerCase().includes(searchTerm) && !tx.party.toLowerCase().includes(searchTerm)) {
+                    searchMatch = false;
+                }
+                return dateMatch && typeMatch && searchMatch;
+            });
+
+            currentPage = 1;
+            displayTransactions();
+        }
+
+        // Event Listeners
+        dateFrom.addEventListener('change', applyFilters);
+        dateTo.addEventListener('change', applyFilters);
+        transactionType.addEventListener('change', applyFilters);
+        searchInput.addEventListener('input', applyFilters);
+
+        // Transaction Details Modal (Optional)
+        function showTransactionDetails(tx) {
+            alert(`Transaction Details:\n\nTransaction ID: ${tx.txId}\nDate: ${tx.date}\nType: ${tx.type}\nAmount: ${tx.amount} DOF\nRecipient/Sender: ${tx.party}\nStatus: ${tx.status}`);
+            // Implement a modal for better UX
+        }
+
+        // Initial Display
+        displayTransactions();
+    </script>
+
+    <!-- AI Chatbot Integration -->
+    <script src="//code.tidio.co/your-chatbot-script.js" async></script>
+</body>
+</html>
