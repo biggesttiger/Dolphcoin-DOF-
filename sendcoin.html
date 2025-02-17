@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send DolphCoin | DolphCoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <style>
+        /* Root Variables */
+        :root {
+            --primary: #00F0FF;
+            --secondary: #0066FF;
+            --background: #0A192F;
+            --card-bg: #112240;
+            --accent: #64FFDA;
+            --text-color: #FFFFFF;
+            --muted-text: rgba(255, 255, 255, 0.6);
+            --danger: #FF4B5C;
+            --success: #28C76F;
+        }
+
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 0.5rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        .container {
+            flex: 1;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Current Balance */
+        .current-balance {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .current-balance .balance {
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .current-balance .balance img {
+            width: 30px;
+            height: 30px;
+            margin-right: 0.5rem;
+        }
+
+        /* Send Form */
+        .send-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .send-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .send-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--muted-text);
+            font-weight: 500;
+        }
+
+        .send-form input, .send-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .send-form input:focus, .send-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .send-form button {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            border: none;
+            color: var(--background);
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .send-form button:hover {
+            background: var(--secondary);
+        }
+
+        /* Error Messages */
+        .error {
+            color: var(--danger);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Confirmation Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 1rem;
+            color: var(--muted-text);
+            line-height: 1.6;
+        }
+
+        .modal-content .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .modal-content .modal-actions button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .modal-content .confirm-button {
+            background: var(--success);
+            color: var(--background);
+        }
+
+        .modal-content .cancel-button {
+            background: var(--danger);
+            color: var(--background);
+        }
+
+        .modal-content .confirm-button:hover {
+            opacity: 0.9;
+        }
+
+        .modal-content .cancel-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: var(--success);
+            color: var(--background);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: var(--muted-text);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Logo">
+            <h1>DolphCoin</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="marketplace.html">Marketplace</a></li>
+                <li><a href="transactions.html">Transactions</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Send DolphCoin</h2>
+
+        <!-- Current Balance -->
+        <div class="current-balance">
+            <div class="balance">
+                <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Icon">
+                <span id="currentBalance">1,234,567 DOF</span>
+            </div>
+        </div>
+
+        <!-- Send Form -->
+        <div class="send-form">
+            <form id="sendForm">
+                <div class="form-group">
+                    <label for="recipientAddress">Recipient Wallet Address</label>
+                    <input type="text" id="recipientAddress" name="recipientAddress" placeholder="Enter recipient's wallet address" required>
+                    <div class="error" id="addressError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="sendAmount">Amount to Send (DOF)</label>
+                    <input type="number" id="sendAmount" name="sendAmount" placeholder="Enter amount" required min="0">
+                    <div class="error" id="amountError"></div>
+                </div>
+                <!-- Optional: Note/Message Field -->
+                <!-- <div class="form-group">
+                    <label for="transactionNote">Add a Note (Optional)</label>
+                    <textarea id="transactionNote" name="transactionNote" rows="3" placeholder="Enter a message or note"></textarea>
+                </div> -->
+                <button type="submit">Send DolphCoin</button>
+            </form>
+            <div class="success-message" id="successMessage">
+                <p><i class="fas fa-check-circle"></i> Transaction Successful!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <h3>Confirm Transaction</h3>
+            <p>You're about to send <strong id="confirmAmount">0 DOF</strong> to:</p>
+            <p id="confirmAddress">[Recipient Wallet Address]</p>
+            <div class="modal-actions">
+                <button class="confirm-button" id="confirmButton">Confirm</button>
+                <button class="cancel-button" id="cancelButton">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; <span id="currentYear"></span> DolphCoin. All rights reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Current Balance
+        const currentBalanceElement = document.getElementById('currentBalance');
+        let currentBalance = 1234567; // Example balance
+        currentBalanceElement.textContent = `${currentBalance.toLocaleString()} DOF`;
+
+        // Send Form Validation and Submission
+        const sendForm = document.getElementById('sendForm');
+        const recipientAddress = document.getElementById('recipientAddress');
+        const sendAmount = document.getElementById('sendAmount');
+        const addressError = document.getElementById('addressError');
+        const amountError = document.getElementById('amountError');
+        const confirmationModal = document.getElementById('confirmationModal');
+        const confirmAmount = document.getElementById('confirmAmount');
+        const confirmAddress = document.getElementById('confirmAddress');
+        const confirmButton = document.getElementById('confirmButton');
+        const cancelButton = document.getElementById('cancelButton');
+        const successMessage = document.getElementById('successMessage');
+
+        sendForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Reset errors
+            addressError.textContent = '';
+            amountError.textContent = '';
+            let hasError = false;
+
+            // Validate Recipient Address
+            if (recipientAddress.value.trim() === '') {
+                addressError.textContent = 'Recipient address is required.';
+                hasError = true;
+            } else if (!validateWalletAddress(recipientAddress.value.trim())) {
+                addressError.textContent = 'Invalid wallet address format.';
+                hasError = true;
+            }
+
+            // Validate Send Amount
+            const amount = parseFloat(sendAmount.value);
+            if (isNaN(amount) || amount <= 0) {
+                amountError.textContent = 'Please enter a valid amount.';
+                hasError = true;
+            } else if (amount > currentBalance) {
+                amountError.textContent = 'Insufficient balance.';
+                hasError = true;
+            }
+
+            if (!hasError) {
+                // Show Confirmation Modal
+                confirmAmount.textContent = `${amount.toLocaleString()} DOF`;
+                confirmAddress.textContent = recipientAddress.value.trim();
+                confirmationModal.classList.add('active');
+            }
+        });
+
+        // Confirmation Modal Actions
+        confirmButton.addEventListener('click', function() {
+            // Perform Transaction (Placeholder for real implementation)
+            const amount = parseFloat(sendAmount.value);
+            currentBalance -= amount;
+            currentBalanceElement.textContent = `${currentBalance.toLocaleString()} DOF`;
+
+            // Hide Modal
+            confirmationModal.classList.remove('active');
+            // Show Success Message
+            successMessage.style.display = 'block';
+            // Reset Form
+            sendForm.reset();
+
+            // Optionally redirect to another page or update transaction history
+        });
+
+        cancelButton.addEventListener('click', function() {
+            confirmationModal.classList.remove('active');
+        });
+
+        // Wallet Address Validation Function (Placeholder)
+        function validateWalletAddress(address) {
+            // Implement actual wallet address validation logic
+            // For demonstration, we'll just check if it starts with 'DOF' and has a certain length
+            return address.startsWith('DOF') && address.length >= 20;
+        }
+
+        // Insert the current year in the footer dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- AI Chatbot Integration -->
+    <script src="//code.tidio.co/your-chatbot-script.js" async></script>
+    <!-- Replace 'your-chatbot-script.js' with the actual script file provided by your chatbot service -->
+</body>
+</html>
