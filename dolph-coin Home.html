@@ -2,15 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home | DolphCoin</title>
+    <title>DOFcoin Wallet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Fonts and Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Styles -->
     <style>
-        /* Root Variables */
         :root {
             --primary: #00F0FF;
             --secondary: #0066FF;
@@ -19,10 +15,12 @@
             --accent: #64FFDA;
             --text-color: #FFFFFF;
             --muted-text: rgba(255, 255, 255, 0.6);
+            --border-radius: 16px;
+            --spacing: 1.5rem;
+            --transition: all 0.3s ease;
         }
 
-        /* Reset and Base Styles */
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -40,408 +38,482 @@
         /* Header Styles */
         header {
             background: var(--card-bg);
-            padding: 1rem 2rem;
+            padding: var(--spacing);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .logo {
             display: flex;
             align-items: center;
+            gap: 1rem;
         }
 
         .logo img {
             width: 40px;
-            margin-right: 0.5rem;
+            height: 40px;
         }
 
         .logo h1 {
             font-size: 1.5rem;
-            font-weight: 600;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         nav ul {
             display: flex;
+            gap: 2rem;
             list-style: none;
-            gap: 1.5rem;
         }
 
-        nav ul li a {
+        nav a {
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
         }
 
-        nav ul li a:hover {
-            color: var(--accent);
+        nav a:hover {
+            background: rgba(255,255,255,0.05);
         }
 
-        /* Main Content */
+        /* Main Container */
         .container {
             flex: 1;
-            padding: 2rem;
+            padding: var(--spacing);
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .welcome {
-            margin-bottom: 2rem;
-        }
-
-        .welcome h2 {
-            font-size: 2rem;
-            font-weight: 600;
-        }
-
-        .welcome p {
-            margin-top: 0.5rem;
-            color: var(--muted-text);
-        }
-
-        .account-overview {
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing);
+            margin-top: var(--spacing);
         }
 
-        /* Responsive Grid Adjustments */
-        @media (min-width: 768px) {
-            .account-overview {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .account-overview {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
+        /* Card Styles */
         .card {
             background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius);
+            padding: var(--spacing);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        .card h3 {
+        .card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header h3 {
             font-size: 1.25rem;
-            margin-bottom: 1rem;
             font-weight: 600;
         }
 
-        .balance {
+        /* Balance Section */
+        .balance-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .balance-display {
             display: flex;
             align-items: center;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .balance img {
-            width: 32px;
-            height: 32px;
-            margin-right: 0.5rem;
-        }
-
-        .quick-actions {
-            display: flex;
             gap: 1rem;
         }
 
-        .quick-actions button {
-            flex: 1;
-            padding: 0.75rem;
-            background: var(--primary);
+        .balance-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
             border: none;
+            border-radius: 8px;
+            background: var(--primary);
             color: var(--background);
             font-weight: 600;
-            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .quick-actions button:hover {
+        .btn:hover {
             background: var(--secondary);
+            transform: translateY(-2px);
         }
 
-        /* Swap Section */
-        .swap-form {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .swap-form h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
+        /* Form Elements */
         .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
+        .form-label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--muted-text);
         }
 
-        .form-group input,
-        .form-group select {
+        .form-input {
             width: 100%;
             padding: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.05);
             color: var(--text-color);
             font-size: 1rem;
+            transition: var(--transition);
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
+        .form-input:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,240,255,0.1);
         }
 
-        .swap-button {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--primary);
-            border: none;
-            color: var(--background);
-            font-weight: 600;
+        /* Transactions List */
+        .transaction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255,255,255,0.03);
             border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
         }
 
-        .swap-button:hover {
-            background: var(--secondary);
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
         }
 
-        /* Footer */
-        footer {
+        .modal-content {
             background: var(--card-bg);
-            padding: 1rem 2rem;
-            text-align: center;
-            color: var(--muted-text);
+            padding: var(--spacing);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
         }
 
         /* Responsive Design */
-        @media (max-width: 480px) {
-            header,
-            footer {
-                padding: 1rem;
-            }
-
-            .container {
-                padding: 1rem;
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
 
             nav ul {
-                display: none;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .balance-amount {
+                font-size: 1.5rem;
             }
         }
-
-        /* Chatbot Custom Styles (Optional) */
-        /* Depending on the chatbot platform, additional customization may be possible */
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Logo">
-            <h1>DolphCoin</h1>
+            <img src="https://i.imgur.com/0NLj45g.png" alt="DOFcoin Logo">
+            <h1>DOFcoin Wallet</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="wallet.html">Wallet</a></li>
-                <li><a href="marketplace.html">Marketplace</a></li>
-                <li><a href="transactions.html">Transactions</a></li>
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="#dashboard" class="active"><i class="fas fa-wallet"></i> Wallet</a></li>
+                <li><a href="#swap"><i class="fas fa-exchange-alt"></i> Swap</a></li>
+                <li><a href="#transactions"><i class="fas fa-history"></i> History</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <!-- Welcome Message -->
-        <div class="welcome">
-            <h2>Welcome Back, [User's Name]</h2>
-            <p>Here's a quick summary of your account today.</p>
-        </div>
-
-        <!-- Account Overview -->
-        <div class="account-overview">
+        <div class="dashboard-grid">
             <!-- Balance Card -->
             <div class="card">
-                <h3>Current Balance</h3>
-                <div class="balance">
-                    <img src="https://i.imgur.com/0NLj45g.png" alt="DolphCoin Icon">
-                    <span id="balanceAmount">1,234,567 DOF</span>
+                <div class="card-header">
+                    <h3>Your DOFcoin Balance</h3>
                 </div>
-                <div class="quick-actions">
-                    <button onclick="sendCoins()"><i class="fas fa-paper-plane"></i> Send</button>
-                    <button onclick="receiveCoins()"><i class="fas fa-download"></i> Receive</button>
+                <div class="balance-container">
+                    <div class="balance-display">
+                        <img src="https://i.imgur.com/0NLj45g.png" alt="DOF" width="40">
+                        <span class="balance-amount" id="balance">0.00 DOF</span>
+                    </div>
+                    <div class="quick-actions" style="display: grid; gap: 1rem; grid-template-columns: 1fr 1fr;">
+                        <button class="btn" id="sendBtn"><i class="fas fa-paper-plane"></i> Send</button>
+                        <button class="btn" id="receiveBtn"><i class="fas fa-qrcode"></i> Receive</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Portfolio Performance Card -->
+            <!-- Swap Card -->
             <div class="card">
-                <h3>Portfolio Performance</h3>
-                <canvas id="portfolioChart"></canvas>
-            </div>
-
-            <!-- Swap DolphCoin Card -->
-            <div class="swap-form">
-                <h3>Swap DolphCoin</h3>
+                <div class="card-header">
+                    <h3>Instant Swap</h3>
+                </div>
                 <form id="swapForm">
                     <div class="form-group">
-                        <label for="fromAmount">Amount in DolphCoin (DLP)</label>
-                        <input type="number" id="fromAmount" name="fromAmount" placeholder="Enter amount" required min="0">
-                    </div>
-                    <div class="form-group">
-                        <label for="toCurrency">Swap to</label>
-                        <select id="toCurrency" name="toCurrency" required>
-                            <option value="" disabled selected>Select currency</option>
-                            <option value="USD">USD - US Dollar</option>
-                            <option value="EUR">EUR - Euro</option>
-                            <option value="GBP">GBP - British Pound</option>
-                            <option value="NGN">NGN - Nigerian Naira</option>
-                            <option value="USDT">USDT - Tether</option>
-                            <!-- Add more currencies as needed -->
+                        <label class="form-label">From</label>
+                        <select class="form-input" id="fromCurrency">
+                            <option value="DOF">DOFcoin (DOF)</option>
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="USDT">Tether (USDT)</option>
                         </select>
                     </div>
-                    <button type="submit" class="swap-button">Swap Now</button>
+                    <div class="form-group">
+                        <label class="form-label">To</label>
+                        <select class="form-input" id="toCurrency">
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="NGN">Nigerian Naira (NGN)</option>
+                            <option value="GBP">British Pound (GBP)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Amount</label>
+                        <input type="number" class="form-input" id="swapAmount" placeholder="0.00" step="0.000001">
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">
+                        <i class="fas fa-exchange-alt"></i> Convert Now
+                    </button>
                 </form>
             </div>
-        </div>
 
-        <!-- Latest News -->
-        <div class="news">
-            <h3>Latest News</h3>
-            <div class="news-item">
-                <i class="far fa-newspaper"></i>
-                <h4>DolphCoin reaches new milestone with 1 million active users.</h4>
-            </div>
-            <div class="news-item">
-                <i class="far fa-newspaper"></i>
-                <h4>Introducing the Dolph Marketplace – Trade with ease.</h4>
-            </div>
-            <div class="news-item">
-                <i class="far fa-newspaper"></i>
-                <h4>Insights: The future of DolphCoin in decentralized finance.</h4>
+            <!-- Transactions Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Recent Transactions</h3>
+                </div>
+                <div class="transaction-list" id="transactions">
+                    <!-- Transactions will be populated here -->
+                </div>
             </div>
         </div>
     </div>
 
-    <footer>
-        &copy; <span id="currentYear"></span> DolphCoin. All rights reserved.
-    </footer>
+    <!-- Send Modal -->
+    <div class="modal" id="sendModal">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 1.5rem;">Send DOFcoin</h3>
+            <form id="sendForm">
+                <div class="form-group">
+                    <label class="form-label">Recipient Address</label>
+                    <input type="text" class="form-input" id="recipient" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Amount (DOF)</label>
+                    <input type="number" class="form-input" id="sendAmount" required>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <button type="submit" class="btn"><i class="fas fa-check"></i> Confirm</button>
+                    <button type="button" class="btn" style="background: var(--card-bg);" onclick="closeModal()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <!-- Include Chart.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Receive Modal -->
+    <div class="modal" id="receiveModal">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 1.5rem;">Receive DOFcoin</h3>
+            <div style="text-align: center;">
+                <div id="qrcode" style="margin: 1rem auto; width: 200px; height: 200px;"></div>
+                <p id="walletAddress" style="word-break: break-all; color: var(--muted-text);"></p>
+                <button class="btn" onclick="copyAddress()" style="margin-top: 1rem;">
+                    <i class="fas fa-copy"></i> Copy Address
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.min.js"></script>
     <script>
-        // Replace [User's Name] with the actual user's name
-        document.querySelector('.welcome h2').textContent = 'Welcome Back, John';
+        class DOFWallet {
+            constructor() {
+                this.balance = 0;
+                this.address = '';
+                this.transactions = [];
+                this.init();
+            }
 
-        // Update the balance to show DolphCoin with logo
-        const balanceElement = document.getElementById('balanceAmount');
-        let currentBalance = 1234567; // Example balance
-        balanceElement.textContent = `${currentBalance.toLocaleString()} DLP`;
+            init() {
+                this.loadWallet();
+                this.setupEventListeners();
+                this.updateUI();
+            }
 
-        // Portfolio Chart
-        const ctx = document.getElementById('portfolioChart').getContext('2d');
-        const portfolioChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                datasets: [{
-                    label: 'Portfolio Value in DLP',
-                    data: [100000, 150000, 200000, 250000, 220000, 300000, 350000],
-                    backgroundColor: 'rgba(0, 240, 255, 0.2)',
-                    borderColor: 'rgba(0, 240, 255, 1)',
-                    borderWidth: 2,
-                    pointBackgroundColor: 'rgba(0, 240, 255, 1)',
-                    tension: 0.3,
-                }]
-            },
-            options: {
-                scales: {
-                    x: {
-                        ticks: { color: getComputedStyle(document.documentElement).getPropertyValue('--text-color') },
-                        grid: { display: false },
-                    },
-                    y: {
-                        ticks: { color: getComputedStyle(document.documentElement).getPropertyValue('--text-color') },
-                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                    }
-                },
-                plugins: {
-                    legend: { display: false }
+            loadWallet() {
+                // Load from localStorage or create new
+                if(localStorage.getItem('dofWallet')) {
+                    const data = JSON.parse(localStorage.getItem('dofWallet'));
+                    this.balance = data.balance;
+                    this.address = data.address;
+                    this.transactions = data.transactions;
+                } else {
+                    this.createNewWallet();
                 }
             }
-        });
 
-        // Swap Functionality
-        document.getElementById('swapForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const fromAmount = parseFloat(document.getElementById('fromAmount').value);
-            const toCurrency = document.getElementById('toCurrency').value;
-
-            if (fromAmount > currentBalance) {
-                alert('You do not have enough DolphCoin to complete this swap.');
-                return;
+            createNewWallet() {
+                this.address = this.generateAddress();
+                this.balance = 0;
+                this.transactions = [];
+                this.saveToStorage();
             }
 
-            // Mock exchange rates for demonstration purposes
-            const exchangeRates = {
-                USD: 0.05,
-                EUR: 0.045,
-                GBP: 0.04,
-                NGN: 20,
-                USDT: 0.05,
-            };
-
-            const rate = exchangeRates[toCurrency];
-
-            if (!rate) {
-                alert('Exchange rate not available.');
-                return;
+            generateAddress() {
+                return 'DOF-' + Math.random().toString(36).substr(2, 9).toUpperCase();
             }
 
-            const convertedAmount = fromAmount * rate;
-            const formattedAmount = convertedAmount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-
-            if (confirm(`You will receive ${formattedAmount} ${toCurrency} for ${fromAmount} DLP. Do you want to proceed?`)) {
-                // Update the balance (for demo purposes)
-                currentBalance -= fromAmount;
-                balanceElement.textContent = `${currentBalance.toLocaleString()} DLP`;
-
-                alert(`Swap successful! You have received ${formattedAmount} ${toCurrency}.`);
-                // In a real application, you would send this data to the backend for processing
+            saveToStorage() {
+                localStorage.setItem('dofWallet', JSON.stringify({
+                    balance: this.balance,
+                    address: this.address,
+                    transactions: this.transactions
+                }));
             }
-        });
 
-        // Quick Actions Functions
-        function sendCoins() {
-            window.location.href = 'send.html';
+            addTransaction(type, amount) {
+                this.transactions.unshift({
+                    type,
+                    amount,
+                    date: new Date().toISOString(),
+                    status: 'completed'
+                });
+                this.saveToStorage();
+                this.updateUI();
+            }
+
+            updateUI() {
+                document.getElementById('balance').textContent = `${this.balance.toFixed(6)} DOF`;
+                document.getElementById('walletAddress').textContent = this.address;
+                this.renderTransactions();
+                this.updateQRCode();
+            }
+
+            renderTransactions() {
+                const container = document.getElementById('transactions');
+                container.innerHTML = this.transactions.map(tx => `
+                    <div class="transaction-item">
+                        <div>
+                            <strong>${tx.type.toUpperCase()}</strong>
+                            <div style="color: var(--muted-text); font-size: 0.9rem;">
+                                ${new Date(tx.date).toLocaleString()}
+                            </div>
+                        </div>
+                        <div style="color: ${tx.type === 'sent' ? 'var(--primary)' : 'var(--accent)'}">
+                            ${tx.type === 'sent' ? '-' : '+'}${tx.amount.toFixed(6)} DOF
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            updateQRCode() {
+                const qr = qrcode(0, 'M');
+                qr.addData(this.address);
+                qr.make();
+                document.getElementById('qrcode').innerHTML = qr.createSvgTag();
+            }
+
+            setupEventListeners() {
+                // Send Button
+                document.getElementById('sendBtn').addEventListener('click', () => {
+                    document.getElementById('sendModal').style.display = 'flex';
+                });
+
+                // Receive Button
+                document.getElementById('receiveBtn').addEventListener('click', () => {
+                    document.getElementById('receiveModal').style.display = 'flex';
+                });
+
+                // Send Form
+                document.getElementById('sendForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const amount = parseFloat(document.getElementById('sendAmount').value);
+                    const recipient = document.getElementById('recipient').value;
+                    
+                    if(amount > this.balance) {
+                        alert('Insufficient balance');
+                        return;
+                    }
+                    
+                    this.balance -= amount;
+                    this.addTransaction('sent', amount);
+                    closeModal();
+                });
+
+                // Swap Form
+                document.getElementById('swapForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const amount = parseFloat(document.getElementById('swapAmount').value);
+                    const from = document.getElementById('fromCurrency').value;
+                    const to = document.getElementById('toCurrency').value;
+                    
+                    // Implement actual swap logic here
+                    alert(`Swapped ${amount} ${from} to ${to}`);
+                    this.addTransaction('swap', amount);
+                });
+            }
         }
 
-        function receiveCoins() {
-            window.location.href = 'receive.html';
+        // Initialize Wallet
+        const wallet = new DOFWallet();
+
+        // Utility Functions
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
         }
 
-        // Insert the current year in the footer dynamically
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        function copyAddress() {
+            navigator.clipboard.writeText(wallet.address);
+            alert('Address copied to clipboard!');
+        }
+
+        // Close modals on outside click
+        window.onclick = function(e) {
+            if(e.target.classList.contains('modal')) {
+                closeModal();
+            }
+        }
+
+        // Initial QR Code
+        wallet.updateQRCode();
     </script>
-
-    <!-- AI Chatbot Integration -->
-    <script src="//code.tidio.co/your-chatbot-script.js" async></script>
-    <!-- Replace 'your-chatbot-script.js' with the actual script file provided by your chatbot service -->
 </body>
 </html>
