@@ -251,13 +251,13 @@
             <h1>Dolphcoin Wallet</h1>
         </div>
         <nav>
-    <ul>
-        <li><a href="#dashboard" class="active"><i class="fas fa-wallet"></i> Wallet</a></li>
-        <li><a href="#swap"><i class="fas fa-exchange-alt"></i> Swap</a></li>
-        <li><a href="#transactions"><i class="fas fa-history"></i> History</a></li>
-        <li><a href="#marketplace"><i class="fas fa-store"></i> Marketplace</a></li>
-    </ul>
-</nav>
+            <ul>
+                <li><a href="#dashboard" class="active"><i class="fas fa-wallet"></i> Wallet</a></li>
+                <li><a href="#swap"><i class="fas fa-exchange-alt"></i> Swap</a></li>
+                <li><a href="#transactions"><i class="fas fa-history"></i> History</a></li>
+                <li><a href="#marketplace"><i class="fas fa-store"></i> Marketplace</a></li>
+            </ul>
+        </nav>
     </header>
 
     <div class="container">
@@ -366,6 +366,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.min.js"></script>
     <script>
+        // Include your SDK script here
+        // Assuming your SDK provides a global object `DolphCoinWallet`
+        
         class DOFWallet {
             constructor() {
                 this.balance = 0;
@@ -374,13 +377,13 @@
                 this.init();
             }
 
-            init() {
-                this.loadWallet();
+            async init() {
+                await this.loadWallet();
                 this.setupEventListeners();
                 this.updateUI();
             }
 
-            loadWallet() {
+            async loadWallet() {
                 // Load from localStorage or create new
                 if(localStorage.getItem('dofWallet')) {
                     const data = JSON.parse(localStorage.getItem('dofWallet'));
@@ -388,19 +391,17 @@
                     this.address = data.address;
                     this.transactions = data.transactions;
                 } else {
-                    this.createNewWallet();
+                    await this.createNewWallet();
                 }
             }
 
-            createNewWallet() {
-                this.address = this.generateAddress();
+            async createNewWallet() {
+                // Use SDK to generate new wallet
+                const walletData = await DolphCoinWallet.generateWallet();
+                this.address = walletData.address;
                 this.balance = 0;
                 this.transactions = [];
                 this.saveToStorage();
-            }
-
-            generateAddress() {
-                return 'DOF-' + Math.random().toString(36).substr(2, 9).toUpperCase();
             }
 
             saveToStorage() {
@@ -465,7 +466,7 @@
                 });
 
                 // Send Form
-                document.getElementById('sendForm').addEventListener('submit', (e) => {
+                document.getElementById('sendForm').addEventListener('submit', async (e) => {
                     e.preventDefault();
                     const amount = parseFloat(document.getElementById('sendAmount').value);
                     const recipient = document.getElementById('recipient').value;
@@ -475,6 +476,8 @@
                         return;
                     }
                     
+                    // Use SDK to send transaction
+                    await DolphCoinWallet.sendTransaction(this.address, recipient, amount);
                     this.balance -= amount;
                     this.addTransaction('sent', amount);
                     closeModal();
@@ -518,14 +521,14 @@
         wallet.updateQRCode();
     </script>
     <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-    .then((registration) => {
-      console.log('Service Worker registered with scope:', registration.scope);
-    }).catch((error) => {
-      console.error('Service Worker registration failed:', error);
-    });
-  }
-</script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch((error) => {
+                console.error('Service Worker registration failed:', error);
+            });
+        }
+    </script>
 </body>
 </html>
