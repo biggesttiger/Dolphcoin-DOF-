@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="manifest" href="/manifest.json">
     <meta charset="UTF-8">
     <title>Dolphcoin Wallet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -516,5 +517,15 @@
         // Initial QR Code
         wallet.updateQRCode();
     </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+    .then((registration) => {
+      console.log('Service Worker registered with scope:', registration.scope);
+    }).catch((error) => {
+      console.error('Service Worker registration failed:', error);
+    });
+  }
+</script>
 </body>
 </html>
