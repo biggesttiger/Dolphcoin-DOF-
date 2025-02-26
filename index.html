@@ -1105,12 +1105,18 @@ async function fetchCryptoNews() {
   });
 </script>   
      <script>
-  function readWhitepaper() {
-    window.location.href = 'https://docs.google.com/document/d/1Kduh72ZGdEEElzzfFfI9yR7YfJQv5Ws1/edit?usp=sharing';
-  }
-
-  function buyDOF() {
-    window.location.href = 'https://dolphcoin.com/buy';
+  async function connectWallet() {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        console.log('Connected', accounts[0]);
+        // Add any additional logic here after connecting the wallet
+      } catch (error) {
+        console.error('Error connecting to wallet', error);
+      }
+    } else {
+      alert('Please install MetaMask!');
+    }
   }
 </script>
       slidesPerView: 1,
