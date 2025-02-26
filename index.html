@@ -985,7 +985,7 @@ async function fetchCryptoNews() {
   }
 }
 </script>
-        <script>
+      <script>
   function readWhitepaper() {
     window.location.href = 'https://docs.google.com/document/d/1Kduh72ZGdEEElzzfFfI9yR7YfJQv5Ws1/edit?usp=sharing'; // Link to the whitepaper
   }
@@ -993,6 +993,18 @@ async function fetchCryptoNews() {
   function buyDOF() {
     window.location.href = 'https://dolphcoin.com/buy'; // Replace with the actual link to the buy DOF page
   }
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.nft-container', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
 </script>
         <script>
   document.addEventListener('DOMContentLoaded', function () {
