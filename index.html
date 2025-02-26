@@ -6,7 +6,7 @@
   <title>Dolph-Coin | The Future of Crypto</title>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- Add Web App Manifest -->
   <link rel="manifest" href="/manifest.json" />
 
@@ -984,6 +984,26 @@ async function fetchCryptoNews() {
     console.error('Error fetching cryptocurrency news:', error);
   }
 }
+</script>
+        <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.nft-container', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+    });
+  });
 </script>
       slidesPerView: 1,
       spaceBetween: 30,
