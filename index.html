@@ -925,11 +925,11 @@
     <button class="chatbot-toggle" onclick="toggleChatbot()">
       <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" />
     </button>
-  <div class="chatbot-window" id="chatbotWindow">
+ <div class="chatbot-window" id="chatbotWindow">
   <div class="chatbot-header">Big Dolph AI Assistant</div>
   <div class="chatbot-messages" id="chatbotMessages"></div>
   <div class="chatbot-input">
-    <input type="text" id="chatbotInput" placeholder="Type a message...">
+    <input type="text" id="chatbotInput" placeholder="Type a message..." onkeyup="handleChatInput(event)">
     <button onclick="sendMessage()">Send</button>
   </div>
 </div>
@@ -1105,14 +1105,49 @@ async function fetchCryptoNews() {
     fetchCryptoNews();
   });
 </script>    
-   <script>
+<script>
   function toggleChatbot() {
     const chatbotWindow = document.getElementById('chatbotWindow');
-    if (chatbotWindow.style.display === 'none' || chatbotWindow.style.display === '') {
-      chatbotWindow.style.display = 'flex';
-    } else {
-      chatbotWindow.style.display = 'none';
+    chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function handleChatInput(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
     }
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('chatbotInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    // Add user message to chat
+    const messagesDiv = document.getElementById('chatbotMessages');
+    messagesDiv.innerHTML += `<div class="message user">${message}</div>`;
+    input.value = '';
+
+    // Scroll to bottom
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+    // Send message to AI backend
+    const response = await fetchAIResponse(message);
+
+    // Add AI response to chat
+    messagesDiv.innerHTML += `<div class="message bot">${response}</div>`;
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  async function fetchAIResponse(message) {
+    const responses = [
+      "Hello! How can I assist you today?",
+      "I'm here to help with any questions about Dolph-Coin.",
+      "You can ask me about tokenomics, NFTs, or how to buy DOF.",
+      "Let me know if you need more information!",
+    ];
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return responses[Math.floor(Math.random() * responses.length)];
   }
 </script>
         <script>
