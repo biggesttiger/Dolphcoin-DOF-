@@ -925,16 +925,11 @@
     <button class="chatbot-toggle" onclick="toggleChatbot()">
       <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" />
     </button>
-   <div class="chatbot-window" id="chatbotWindow">
-  <div class="chatbot-header">
-    Big Dolph AI Assistant
-    <button class="download-btn" onclick="downloadApp()">
-      <i class="fas fa-download"></i> Download App
-    </button>
-  </div>
+  <div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">Big Dolph AI Assistant</div>
   <div class="chatbot-messages" id="chatbotMessages"></div>
   <div class="chatbot-input">
-    <input type="text" id="chatbotInput" placeholder="Type a message..." onkeyup="handleChatInput(event)">
+    <input type="text" id="chatbotInput" placeholder="Type a message...">
     <button onclick="sendMessage()">Send</button>
   </div>
 </div>
