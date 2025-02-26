@@ -356,16 +356,17 @@
       font-size: 1.2rem;
     }
   }
-  /* Chatbot Styles */
-  .chatbot-container {
-    position: fixed;
-    bottom: 20px;
-    right
-      padding: 2rem;
-      text-align: center;
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+ /* Chatbot Styles */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: none; /* Removed the border */
+}
 
     .sm-card:hover {
       transform: translateY(-10px);
