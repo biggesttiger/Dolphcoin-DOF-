@@ -709,6 +709,7 @@
       <a href="dolphcontactus.html">Contact</a>
        <!-- Add buttons for wallet interaction -->
   <button onclick="connectWallet()">Connect Wallet</button>
+<span id="wallet-address"></span>
  <!-- Add Check Balance button (conditionally displayed) -->
     <div class="pwa-only">
       <button onclick="fetchBalance()">Check Balance</button>
@@ -1106,18 +1107,18 @@ async function fetchCryptoNews() {
 </script>   
      <script>
   async function connectWallet() {
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        console.log('Connected', accounts[0]);
-        // Add any additional logic here after connecting the wallet
-      } catch (error) {
-        console.error('Error connecting to wallet', error);
-      }
-    } else {
-      alert('Please install MetaMask!');
+  if (window.ethereum) {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      console.log('Connected', accounts[0]);
+      document.getElementById('wallet-address').textContent = `Connected: ${accounts[0]}`;
+    } catch (error) {
+      console.error('Error connecting to wallet', error);
     }
+  } else {
+    alert('Please install MetaMask!');
   }
+}
 </script>
       slidesPerView: 1,
       spaceBetween: 30,
