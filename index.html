@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dolph-Coin | The Future of Crypto</title>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
   <!-- Add Web App Manifest -->
   <link rel="manifest" href="/manifest.json" />
 
@@ -17,360 +17,221 @@
   <link rel="apple-touch-icon" href="https://i.imgur.com/0NLj45g.png" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
- <style>
-  :root {
-    --primary: #00d4ff;
-    --secondary: #007bff;
-    --dark-blue: #0a192f;
-    --content-bg: #1e2a47;
-    --accent: #2a3a5b;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  body {
-    background: var(--dark-blue);
-    color: #fff;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  .header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    padding: 1rem 0;
-    z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    min-height: 70px;
-  }
-  .nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .nav a {
-    color: white;
-    text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    font-weight: 500;
-  }
-  .nav a:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-  }
-  .hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 70px 2rem 0 2rem;
-    background: linear-gradient(45deg, var(--dark-blue), var(--accent));
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-    opacity: 0.1;
-    animation: pulse 8s infinite;
-  }
-  .logo {
-    width: 180px;
-    margin-bottom: 2rem;
-    animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
-  }
-  .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    color: white;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    margin: 1rem;
-    border: none;
-    cursor: pointer;
-  }
-  .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
-  }
-  .content-section {
-    padding: 5rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  .card {
-    background: var(--content-bg);
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  }
-  .crypto-price-slider {
-    padding: 2rem 1rem; /* Ensure padding is balanced */
-    text-align: center;
-  }
-  .crypto-container {
-    max-width: 1200px; /* Reverted to original width */
-    max-height: 300px; /* Reduced height by 50% */
-    margin: 0 auto;
-    background: var(--content-bg);
-    padding: 2rem; /* Reverted to original padding */
-    border-radius: 20px;
-    overflow: hidden; /* Ensures content doesn't overflow */
-  }
-.crypto-swiper, .news-swiper {
-  height: 108px; /* Reduced by an additional 10% from 120px */
-}
-  .crypto-slide {
-    height: 50%; /* Reduced height by 50% */
-    padding: 2rem; /* Reverted to original padding */
-  }
-  .crypto-slide img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 1rem;
-  }
-  .crypto-slide h3 {
-    color: var(--primary);
-    margin-bottom: 1rem;
-  }
-  .crypto-slide p {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  .sm-engagement-section {
-    padding: 5rem 2rem;
-    background: var(--accent);
-    text-align: center;
-  }
-  .sm-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  .sm-card {
-    background: var(--content-bg);
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .sm-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  }
-  .sm-card h3 {
-    color: var(--primary);
-    margin-bottom: 1rem;
-  }
-  .sm-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
-  }
- .nft-section {
-  padding: 4rem 1.6rem; /* Reduced padding by 20% */
-  background: var(--accent);
-}
-.swiper-container {
-  width: 100%;
-  height: 400px; /* Adjust height as needed */
-}
-.swiper-slide {
-  width: 100%; /* Ensure it occupies full width */
-  background: var(--content-bg);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 10px; /* Add margin if needed */
-}
- .swiper-slide:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  }
-  .swiper-slide img {
-  width: 100%;
-  height: auto; /* Maintain aspect ratio */
-}
-  .nft-info {
-    padding: 1.5rem;
-    text-align: center;
-  }
-  .nft-info h4 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--primary);
-  }
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: var(--primary) !important;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 50%;
-    backdrop-filter: blur(5px);
-  }
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
-    font-size: 1.5rem !important;
-  }
-  .newsletter {
-    padding: 4rem 2rem;
-    text-align: center;
-    background: var(--content-bg);
-  }
-  .newsletter-inner {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--accent);
-    padding: 3rem;
-    border-radius: 20px;
-  }
-  .newsletter input {
-    padding: 1rem;
-    width: 70%;
-    border: none;
-    border-radius: 50px 0 0 50px;
-    background: var(--dark-blue);
-    color: white;
-  }
-  .newsletter button {
-    padding: 1rem 2rem;
-    border-radius: 0 50px 50px 0;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .newsletter button:hover {
-    opacity: 0.9;
-  }
-  footer {
-    padding: 3rem 2rem;
-    background: var(--content-bg);
-    text-align: center;
-  }
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 2rem 0;
-  }
-  .social-links a {
-    color: white;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-  }
-  .social-links a:hover {
-    color: var(--primary);
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-  }
-  @keyframes pulse {
-    0% { transform: scale(1); opacity: 0.1; }
-    50% { transform: scale(1.2); opacity: 0.05; }
-    100% { transform: scale(1); opacity: 0.1; }
-  }
-  @media (max-width: 768px) {
-    .hero h1 {
-      font-size: 2.5rem;
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --secondary: #007bff;
+      --dark-blue: #0a192f;
+      --content-bg: #1e2a47;
+      --accent: #2a3a5b;
     }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--dark-blue);
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      padding: 1rem 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      min-height: 70px;
+    }
+
     .nav {
-      gap: 1rem;
-      padding: 0 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
     .hero {
-      padding: 60px 1rem 0 1rem;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 70px 2rem 0 2rem;
+      background: linear-gradient(45deg, var(--dark-blue), var(--accent));
+      position: relative;
+      overflow: hidden;
     }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+      opacity: 0.1;
+      animation: pulse 8s infinite;
+    }
+
     .logo {
-      width: 120px;
+      width: 180px;
+      margin-bottom: 2rem;
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin: 1rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3));
+    }
+
+    .content-section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: var(--content-bg);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3));
+    }
+
+    .crypto-price-slider {
+      padding: 4rem 2rem;
+      background: var(--dark-blue);
+      text-align: center;
+    }
+
+    .crypto-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--content-bg);
+      padding: 2rem;
+      border-radius: 20px;
+    }
+
+    .crypto-swiper {
+      padding: 2rem;
+    }
+
+    .crypto-slide {
+      background: var(--accent);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .crypto-slide:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3));
+    }
+
+    .crypto-slide img {
+      width: 50px;
+      height: 50px;
       margin-bottom: 1rem;
     }
-    .btn {
-      padding: 0.8rem 1.5rem;
-      font-size: 0.9rem;
-    }
-    .newsletter input {
-      width: 60%;
-    }
-    .newsletter button {
-      padding: 1rem 1.5rem;
-    }
-    .crypto-swiper {
-      padding: 1rem;
-    }
-    .crypto-slide {
-      padding: 1rem;
-    }
-    .crypto-slide img {
-      width: 40px;
-      height: 40px;
-    }
+
     .crypto-slide h3 {
-      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
     }
+
     .crypto-slide p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
-  }
- /* Chatbot Styles */
-.chatbot-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  padding: 2rem;
-  text-align: center;
-  transition: transform 0.3s ease;
-  border: none; /* Removed the border */
-}
+
+    .sm-engagement-section {
+      padding: 5rem 2rem;
+      background: var(--accent);
+      text-align: center;
+    }
+
+    .sm-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .sm-card {
+      background: var(--content-bg);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
     .sm-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3));
     }
 
     .sm-card h3 {
@@ -404,7 +265,7 @@
 
     .swiper-slide:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3));
     }
 
     .swiper-slide img {
@@ -579,8 +440,8 @@
     }
 
     .chatbot-toggle img {
-      width: 82px; /* Increased size by 30% (original was 70px) */
-      height: 82px; /* Increased size by 30% (original was 70px) */
+      width: 60px; /* Increased size by 20% (original was 50px) */
+      height: 60px; /* Increased size by 20% (original was 50px) */
       transition: transform 0.3s ease;
     }
 
@@ -588,35 +449,34 @@
       transform: scale(1.1); /* Slight hover effect */
     }
 
-.chatbot-window {
-  width: 300px;
-  background: rgba(30, 42, 71, 0.8); /* Semi-transparent background */
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  position: absolute;
-  bottom: 80px;
-  right: 0;
-  backdrop-filter: blur(10px); /* Adds a blur effect to the background */
-  border: none; /* Removed the border */
-}
+    .chatbot-window {
+      width: 300px;
+      background: rgba(30, 42, 71, 0.8); /* Semi-transparent background */
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      backdrop-filter: blur(10px); /* Adds a blur effect to the background */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
+    }
 
-.chatbot-window {
-  width: 300px;
-  background: rgba(30, 42, 71, 0.8); /* Semi-transparent background */
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  position: absolute;
-  bottom: 80px;
-  right: 0;
-  backdrop-filter: blur(10px); /* Adds a blur effect to the background */
-  border: none; /* Removed the border */
-}
+    .chatbot-header {
+      background: rgba(0, 212, 255, 0.8); /* Semi-transparent gradient */
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(5px); /* Adds a blur effect to the header */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Light border for contrast */
+    }
+
     .chatbot-messages {
       flex: 1;
       padding: 1rem;
@@ -690,14 +550,7 @@
         bottom: 70px;
       }
     }
-      .pwa-only {
-    display: none;
-  }
-  .pwa-mode .pwa-only {
-    display: block;
-  }
   </style>
-  <script src="path/to/dof-wallet-sdk.js"></script>
 </head>
 <body>
   <header class="header">
@@ -706,41 +559,37 @@
       <a href="dolph about.html">About</a>
       <a href="dolphtokenomics.html">Tokenomics</a>
       <a href="dolphnft.html">NFTs</a>
+      <a href="dolphgames.html">Games</a> <!-- Added Games Link -->
       <a href="dolphcontactus.html">Contact</a>
-       <!-- Add buttons for wallet interaction -->
-  <button onclick="connectWallet()">Connect Wallet</button>
-<span id="wallet-address"></span>
- <!-- Add Check Balance button (conditionally displayed) -->
-    <div class="pwa-only">
-      <button onclick="fetchBalance()">Check Balance</button>
-    </div>
+      <button class="btn" onclick="connectWallet()">Connect Wallet</button>
     </nav>
   </header>
 
   <section class="hero">
-  <img src="https://i.imgur.com/D8rVVgG.png" alt="Dolph-Coin Logo" class="logo">
-  <h1>Welcome to Dolph-Coin (DOF)</h1>
-  <div class="btn-group">
-    <button class="btn" onclick="buyDOF()">Buy DOF</button>
-  </div>
-</section>
+    <img src="https://i.imgur.com/D8rVVgG.png" alt="Dolph-Coin Logo" class="logo">
+    <h1>Welcome to Dolph-Coin (DOF)</h1>
+    <div class="btn-group">
+      <button class="btn" onclick="readWhitepaper()">Whitepaper</button>
+      <button class="btn" onclick="buyDOF()">Buy DOF</button>
+    </div>
+  </section>
 
- <section class="content-section">
-  <h2>About Dolph-Coin</h2>
-  <div class="card-grid">
-    <div class="card">
-      <p>
-        Dolph-Coin (DOF) is a revolutionary cryptocurrency designed to bring the power of blockchain technology to the masses. Our mission is to create a decentralized financial ecosystem that [...]
-      </p>
-      <a class="btn" href="https://docs.google.com/document/d/1Kduh72ZGdEEElzzfFfI9yR7YfJQv5Ws1/edit?usp=sharing" target="_blank">Whitepaper</a>
+  <section class="content-section">
+    <h2>About Dolph-Coin</h2>
+    <div class="card-grid">
+      <div class="card">
+        <p>
+          Dolph-Coin (DOF) is a revolutionary cryptocurrency designed to bring the power of blockchain technology to the masses. Our mission is to create a decentralized financial ecosystem that is accessible, secure, and efficient for everyone.
+        </p>
+        <a href="https://docs.google.com/document/d/1Kduh72ZGdEEElzzfFfI9yR7YfJQv5Ws1/edit?usp=sharing" class="btn" target="_blank">Read Whitepaper</a>
+      </div>
+      <div class="card">
+        <p>
+          Our team is composed of experienced professionals from various fields, including blockchain development, finance, and marketing. We are committed to transparency, security, and continuous improvement.
+        </p>
+      </div>
     </div>
-    <div class="card">
-      <p>
-        Our team is composed of experienced professionals from various fields, including blockchain development, finance, and marketing. We are committed to transparency, security, and continuo[...]
-      </p>
-    </div>
-  </div>
-</section>
+  </section>
 
   <section class="content-section">
     <h2>Tokenomics Overview</h2>
@@ -768,102 +617,93 @@
     </div>
   </section>
 
- <section class="nft-section">
-  <h2>Exclusive NFT Collection</h2>
-  <div class="swiper nft-container">
-    <div class="swiper-wrapper">
-      <!-- NFT 1 -->
-      <div class="swiper-slide">
-        <img src="https://i.imgur.com/G30whrD.png" alt="Dolphin Warrior NFT">
-        <div class="nft-info">
-          <h4>Big-Dolph</h4>
-          <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/1/" class="btn" target="_blank">
-            View on OpenSea
-          </a>
+  <section class="nft-section">
+    <h2>Exclusive NFT Collection</h2>
+    <div class="swiper nft-container">
+      <div class="swiper-wrapper">
+        <!-- NFT 1 -->
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/G30whrD.png" alt="Dolphin Warrior NFT">
+          <div class="nft-info">
+            <h4>Big-Dolph</h4>
+            <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/1/" class="btn" target="_blank">
+              View on OpenSea
+            </a>
+          </div>
         </div>
-      </div>
-      <!-- NFT 2 -->
-      <div class="swiper-slide">
-        <img src="https://i.imgur.com/moPngyl.png" alt="Golden Dolphin NFT">
-        <div class="nft-info">
-          <h4>Big-Dolph #-001</h4>
-          <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/2/" class="btn" target="_blank">
-            View on OpenSea
-          </a>
-        </div>
-      </div>
-      <!-- NFT 3 -->
-      <div class="swiper-slide">
-        <img src="https://i.imgur.com/RtWirEr.png" alt="Cyber Dolphin NFT">
-        <div class="nft-info">
-          <h4>Big Dolph #5746</h4>
-          <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/27/" class="btn" target="_blank">
-            View on OpenSea
-          </a>
-        </div>
-      </div>
-      <!-- NFT 4 -->
-      <div class="swiper-slide">
-        <img src="https://i.imgur.com/lTO3uj7.png" alt="Dolphin King NFT">
-        <div class="nft-info">
-          <h4>Big Dolph #1734</h4>
-          <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/26/" class="btn" target="_blank">
-            View on OpenSea
-          </a>
-        </div>
-      </div>
-      <!-- NFT 5 -->
-      <div class="swiper-slide">
-        <img src="https://i.imgur.com/yGmznj0.png" alt="Dolphin Explorer NFT">
-        <div class="nft-info">
-          <h4>Big Dolph #2478</h4>
-          <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/24/" class="btn" target="_blank">
-            View on OpenSea
-          </a>
-        </div>
-      </div>
-      <!-- NFT 6 -->
-      <div class="swiper-slide">
-        <img src="https://i.imgur.com/tdjml9u.png" alt="Dolphin Commander NFT">
-        <div class="nft-info">
-          <h4>Big Dolph #3159</h4>
-          <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/31/" class="btn" target="_blank">
-            View on OpenSea
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-</section>
 
-<section class="crypto-price-slider">
-  <div class="crypto-prices">
+        <!-- NFT 2 -->
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/moPngyl.png" alt="Golden Dolphin NFT">
+          <div class="nft-info">
+            <h4>Big-Dolph #-001</h4>
+            <a href="https://opensea.io/assets/matic/0x9b46dac9f8ada09e96c842e703f9a77d7aa7fbc4/2/" class="btn" target="_blank">
+              View on OpenSea
+            </a>
+          </div>
+        </div>
+
+        <!-- NFT 3 -->
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/RtWirEr.png" alt="Cyber Dolphin NFT">
+          <div class="nft-info">
+            <h4>Big Dolph #5746</h4>
+            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/27/" class="btn" target="_blank">
+              View on OpenSea
+            </a>
+          </div>
+        </div>
+
+        <!-- NFT 4 -->
+        <div class="swiper-slide">
+          <img src="https://i.imgur.com/lTO3uj7.png" alt="Dolphin King NFT">
+          <div class="nft-info">
+            <h4>Big Dolph #1734</h4>
+            <a href="https://opensea.io/assets/matic/0xac4762429a4d3cae67e2b45f8607c9ad74a4404c/26/" class="btn" target="_blank">
+              View on OpenSea
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <section class="crypto-price-slider">
     <h2>Real-Time Cryptocurrency Prices</h2>
     <div class="crypto-container">
       <div class="swiper crypto-swiper">
         <div class="swiper-wrapper">
-          <!-- Slides for prices will be dynamically populated by JavaScript -->
+          <!-- Slides will be dynamically populated by JavaScript -->
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
       </div>
     </div>
-  </div>
-  <div class="crypto-news">
-    <h2>Latest Cryptocurrency News</h2>
-    <div class="crypto-container">
-      <div class="swiper news-swiper">
-        <div class="swiper-wrapper">
-          <!-- Slides for news will be dynamically populated by JavaScript -->
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+  </section>
+
+  <!-- Games Section -->
+  <section class="content-section">
+    <h2>Play and Earn with Dolph-Coin Games</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Dolphin Run</h3>
+        <p>An exciting endless runner game where you collect DOF tokens while avoiding obstacles.</p>
+        <a href="dolphgames.html" class="btn">Play Now</a>
+      </div>
+      <div class="card">
+        <h3>Dolphin Tycoon</h3>
+        <p>Build and manage your underwater empire while earning DOF rewards.</p>
+        <a href="dolphgames.html" class="btn">Play Now</a>
+      </div>
+      <div class="card">
+        <h3>Dolphin Slot Machine</h3>
+        <p>Spin the reels and win DOF tokens in this fun and interactive slot machine game.</p>
+        <a href="dolphgames.html" class="btn">Play Now</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section class="sm-engagement-section">
     <h2>Boost Your Social Media Presence</h2>
@@ -904,7 +744,7 @@
 
   <footer>
     <div class="social-links">
-      <a href="https://x.com/Dolph4evaa" target="_blank">
+      <a href="https://x.com/biggestdolph01" target="_blank">
         <i class="fab fa-twitter"></i>
       </a>
       <a href="https://www.tiktok.com/@bigdolph3" target="_blank">
@@ -925,84 +765,32 @@
     <button class="chatbot-toggle" onclick="toggleChatbot()">
       <img src="https://i.imgur.com/0NLj45g.png" alt="Big Dolph AI Logo" />
     </button>
-</div>
-   <script>
-// Fetch real-time cryptocurrency prices from CoinGecko API
-async function fetchCryptoPrices() {
-  try {
-    const response = await fetch(
-      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,binancecoin,cardano,solana,ripple&order=market_cap_desc&per_page=100&page=1&sparkline=false&api_key=iAsKWhPTqizTb1OmbcVrggnXSzkRoGLt3zcoUKNwjHbmxOQTFs0idIPvZnfKrfIA'
-    );
-    const data = await response.json();
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">
+        Big Dolph AI Assistant
+        <button class="download-btn" onclick="downloadApp()">
+          <i class="fas fa-download"></i> Download App
+        </button>
+      </div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot">
+          Hi! I'm Big Dolph, your AI assistant. How can I help you today?
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbotInput" placeholder="Ask me anything..." onkeypress="handleChatInput(event)" />
+        <button onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
-    const cryptoContainer = document.querySelector('.crypto-swiper .swiper-wrapper');
-    cryptoContainer.innerHTML = ''; // Clear existing slides
-
-    data.forEach((crypto) => {
-      const slide = document.createElement('div');
-      slide.classList.add('swiper-slide', 'crypto-slide');
-      slide.innerHTML = `
-        <img src="${crypto.image}" alt="${crypto.name}">
-        <h3>${crypto.name}</h3>
-        <p>$${crypto.current_price}</p>
-      `;
-      cryptoContainer.appendChild(slide);
-    });
-  } catch (error) {
-    console.error('Error fetching cryptocurrency prices:', error);
-  }
-}
-
-// Fetch latest cryptocurrency news using the new API key
-async function fetchCryptoNews() {
-  try {
-    const response = await fetch(
-      'https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=pub_71057853239bfe213d796bbd647960bc72516'
-    );
-    const data = await response.json();
-
-    const newsContainer = document.querySelector('.news-swiper .swiper-wrapper');
-    newsContainer.innerHTML = ''; // Clear existing slides
-
-    data.articles.forEach((article) => {
-      const slide = document.createElement('div');
-      slide.classList.add('swiper-slide', 'news-slide');
-      slide.innerHTML = `
-        <h3>${article.title}</h3>
-        <p>${article.description}</p>
-        <a href="${article.url}" target="_blank">Read more</a>
-      `;
-      newsContainer.appendChild(slide);
-    });
-  } catch (error) {
-    console.error('Error fetching cryptocurrency news:', error);
-  }
-}
-</script>
-<script>
-  function readWhitepaper() {
-    window.location.href = 'https://docs.google.com/document/d/1Kduh72ZGdEEElzzfFfI9yR7YfJQv5Ws1/edit?usp=sharing'; // Link to the whitepaper
-  }
-
-  function buyDOF() {
-    window.location.href = 'https://dolphcoin.com/buy'; // Replace with the actual link to the buy DOF page
-  }
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.nft-container', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  });
-</script>
-        <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.nft-container', {
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    // Initialize Swiper for NFT slider
+    var nftSwiper = new Swiper('.nft-container', {
+      loop: true,
       slidesPerView: 1,
       spaceBetween: 30,
       navigation: {
@@ -1018,87 +806,164 @@ async function fetchCryptoNews() {
         disableOnInteraction: false,
       },
     });
-  });
-</script>
-     <script>
-  // Fetch real-time cryptocurrency prices from CoinGecko API
-  async function fetchCryptoPrices() {
-    try {
-      const response = await fetch(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,binancecoin,cardano,solana,ripple&order=market_cap_desc&per_page=10&page=1&sparkline=false&api_key=CG-mLuJ1f5yf7AYHPtEjaPaTEu4'
-      );
-      const data = await response.json();
 
-      const cryptoContainer = document.querySelector('.crypto-swiper .swiper-wrapper');
-      cryptoContainer.innerHTML = ''; // Clear existing slides
-
-      data.forEach((crypto) => {
-        const slide = document.createElement('div');
-        slide.classList.add('swiper-slide', 'crypto-slide');
-        slide.innerHTML = `
-          <img src="${crypto.image}" alt="${crypto.name}">
-          <h3>${crypto.name}</h3>
-          <p>$${crypto.current_price}</p>
-        `;
-        cryptoContainer.appendChild(slide);
-      });
-    } catch (error) {
-      console.error('Error fetching cryptocurrency prices:', error);
-    }
-  }
-
-  // Fetch latest cryptocurrency news using NewsAPI
-  async function fetchCryptoNews() {
-    try {
-      const response = await fetch(
-        'https://newsapi.org/v2/everything?q=cryptocurrency&apiKey=f1e56de27cb94b02e026ae7e3a7af06836304061'
-      );
-      const data = await response.json();
-
-      const newsContainer = document.querySelector('.news-swiper .swiper-wrapper');
-      newsContainer.innerHTML = ''; // Clear existing slides
-
-      data.articles.forEach((article) => {
-        const slide = document.createElement('div');
-        slide.classList.add('swiper-slide', 'news-slide');
-        slide.innerHTML = `
-          <h3>${article.title}</h3>
-          <p>${article.description}</p>
-          <a href="${article.url}" target="_blank">Read more</a>
-        `;
-        newsContainer.appendChild(slide);
-      });
-    } catch (error) {
-      console.error('Error fetching cryptocurrency news:', error);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    // Initialize Swipers
-    var swiperCrypto = new Swiper('.crypto-swiper', {
+    // Initialize Swiper for crypto price slider
+    var cryptoSwiper = new Swiper('.crypto-swiper', {
+      loop: true,
       slidesPerView: 1,
       spaceBetween: 30,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-    });
-
-    var swiperNews = new Swiper('.news-swiper', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
       },
     });
-    
-    // Fetch data for sliders
+
+    // Fetch real-time DOF information from CoinGecko API
+    async function fetchDOFInfo() {
+      try {
+        const response = await fetch(
+          'https://api.coingecko.com/api/v3/coins/dolphin-token-2' // Replace with the correct CoinGecko ID for Dolph-Coin
+        );
+        const data = await response.json();
+        const price = data.market_data.current_price.usd.toFixed(4);
+        const marketCap = data.market_data.market_cap.usd.toLocaleString();
+        const volume = data.market_data.total_volume.usd.toLocaleString();
+        const priceChange = data.market_data.price_change_percentage_24h.toFixed(2);
+
+        // Update the information slides
+        document.getElementById('dof-price').textContent = `$${price}`;
+        document.getElementById('dof-market-cap').textContent = `$${marketCap}`;
+        document.getElementById('dof-volume').textContent = `$${volume}`;
+        document.getElementById('dof-price-change').textContent = `${priceChange}%`;
+
+        // Color the price change based on positive/negative value
+        const priceChangeElement = document.getElementById('dof-price-change');
+        if (priceChange > 0) {
+          priceChangeElement.style.color = '#00ff00'; // Green for positive
+        } else {
+          priceChangeElement.style.color = '#ff0000'; // Red for negative
+        }
+      } catch (error) {
+        console.error('Error fetching DOF information:', error);
+        document.getElementById('dof-price').textContent = 'Coming Soon';
+        document.getElementById('dof-market-cap').textContent = 'Coming Soon';
+        document.getElementById('dof-volume').textContent = 'Coming Soon';
+        document.getElementById('dof-price-change').textContent = 'Coming Soon';
+      }
+    }
+
+    // Fetch real-time cryptocurrency prices from CoinGecko API
+    async function fetchCryptoPrices() {
+      try {
+        const response = await fetch(
+          'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,binancecoin,cardano,solana,ripple&order=market_cap_desc&per_page=100&page=1&sparkline=false'
+        );
+        const data = await response.json();
+
+        const cryptoContainer = document.querySelector('.crypto-swiper .swiper-wrapper');
+        cryptoContainer.innerHTML = ''; // Clear existing slides
+
+        data.forEach((crypto) => {
+          const slide = document.createElement('div');
+          slide.classList.add('swiper-slide', 'crypto-slide');
+          slide.innerHTML = `
+            <img src="${crypto.image}" alt="${crypto.name}">
+            <h3>${crypto.name}</h3>
+            <p>$${crypto.current_price.toLocaleString()}</p>
+          `;
+          cryptoContainer.appendChild(slide);
+        });
+      } catch (error) {
+        console.error('Error fetching cryptocurrency prices:', error);
+        const cryptoContainer = document.querySelector('.crypto-swiper .swiper-wrapper');
+        cryptoContainer.innerHTML = '<div class="swiper-slide crypto-slide"><p>Failed to load cryptocurrency prices.</p></div>';
+      }
+    }
+
+    // Fetch information every 10 seconds
+    fetchDOFInfo();
     fetchCryptoPrices();
-    fetchCryptoNews();
-  });
-</script>    
+    setInterval(fetchDOFInfo, 10000);
+    setInterval(fetchCryptoPrices, 10000);
+
+    // Chatbot Functions
+    function toggleChatbot() {
+      const chatbotWindow = document.getElementById('chatbotWindow');
+      chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function handleChatInput(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chatbotInput');
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Add user message to chat
+      const messagesDiv = document.getElementById('chatbotMessages');
+      messagesDiv.innerHTML += `<div class="message user">${message}</div>`;
+      input.value = '';
+
+      // Scroll to bottom
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+      // Send message to AI backend
+      const response = await fetchAIResponse(message);
+
+      // Add AI response to chat
+      messagesDiv.innerHTML += `<div class="message bot">${response}</div>`;
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    async function fetchAIResponse(message) {
+      // Mock AI response for testing
+      const responses = [
+        "Hello! How can I assist you today?",
+        "I'm here to help with any questions about Dolph-Coin.",
+        "You can ask me about tokenomics, NFTs, or how to buy DOF.",
+        "Let me know if you need more information!",
+      ];
+
+      // Simulate a delay to mimic real API behavior
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Return a random response from the list
+      return responses[Math.floor(Math.random() * responses.length)];
+    }
+
+    // Download App Function
+    function downloadApp() {
+      const appDownloadLink = 'https://your-app-download-link.com';
+      window.open(appDownloadLink, '_blank');
+    }
+
+    // Connect Wallet Function
+    function connectWallet() {
+      alert('Connect Wallet functionality coming soon!');
+    }
+
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
+    }
   </script>
-      
 </body>
 </html>
