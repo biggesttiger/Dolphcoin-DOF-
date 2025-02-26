@@ -1110,6 +1110,66 @@ async function fetchCryptoNews() {
     fetchCryptoNews();
   });
 </script>    
+     <script>
+  function toggleChatbot() {
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function handleChatInput(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('chatbotInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    // Add user message to chat
+    const messagesDiv = document.getElementById('chatbotMessages');
+    messagesDiv.innerHTML += `<div class="message user">${message}</div>`;
+    input.value = '';
+
+    // Scroll to bottom
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+    // Send message to AI backend
+    const response = await fetchAIResponse(message);
+
+    // Add AI response to chat
+    messagesDiv.innerHTML += `<div class="message bot">${response}</div>`;
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  async function fetchAIResponse(message) {
+    const responses = [
+      "Hello! How can I assist you today?",
+      "I'm here to help with any questions about Dolph-Coin.",
+      "You can ask me about tokenomics, NFTs, or how to buy DOF.",
+      "Let me know if you need more information!",
+    ];
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+</script>
+        <script>
+  async function connectWallet() {
+  if (window.ethereum) {
+    try {
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      console.log('Connected', accounts[0]);
+      document.getElementById('wallet-address').textContent = `Connected: ${accounts[0]}`;
+    } catch (error) {
+      console.error('Error connecting to wallet', error);
+    }
+  } else {
+    alert('Please install MetaMask!');
+  }
+}
+</script>
      slidesPerView: 1,
       spaceBetween: 30,
       navigation: {
@@ -1264,65 +1324,6 @@ async function fetchCryptoNews() {
     document.body.classList.add('pwa-mode');
   }
   </script>
-       <script>
-  function toggleChatbot() {
-    const chatbotWindow = document.getElementById('chatbotWindow');
-    chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
-  }
-
-  function handleChatInput(event) {
-    if (event.key === 'Enter') {
-      sendMessage();
-    }
-  }
-
-  async function sendMessage() {
-    const input = document.getElementById('chatbotInput');
-    const message = input.value.trim();
-    if (!message) return;
-
-    // Add user message to chat
-    const messagesDiv = document.getElementById('chatbotMessages');
-    messagesDiv.innerHTML += `<div class="message user">${message}</div>`;
-    input.value = '';
-
-    // Scroll to bottom
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-
-    // Send message to AI backend
-    const response = await fetchAIResponse(message);
-
-    // Add AI response to chat
-    messagesDiv.innerHTML += `<div class="message bot">${response}</div>`;
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  }
-
-  async function fetchAIResponse(message) {
-    const responses = [
-      "Hello! How can I assist you today?",
-      "I'm here to help with any questions about Dolph-Coin.",
-      "You can ask me about tokenomics, NFTs, or how to buy DOF.",
-      "Let me know if you need more information!",
-    ];
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    return responses[Math.floor(Math.random() * responses.length)];
-  }
-</script>
-        <script>
-  async function connectWallet() {
-  if (window.ethereum) {
-    try {
-      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      console.log('Connected', accounts[0]);
-      document.getElementById('wallet-address').textContent = `Connected: ${accounts[0]}`;
-    } catch (error) {
-      console.error('Error connecting to wallet', error);
-    }
-  } else {
-    alert('Please install MetaMask!');
-  }
-}
-</script>
+      
 </body>
 </html>
