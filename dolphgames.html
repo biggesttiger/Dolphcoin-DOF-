@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dolph Coin Games</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --secondary: #007bff;
+      --dark-blue: #0a192f;
+      --content-bg: #1e2a47;
+      --accent: #2a3a5b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--dark-blue);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+    }
+
+    .header {
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      height: 120px;
+      transition: transform 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .intro {
+      background: var(--content-bg);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .intro h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .intro p {
+      color: #ddd;
+      margin-bottom: 1rem;
+    }
+
+    .intro .warning {
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+
+    .rules-btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .rules-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--content-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: #ddd;
+      margin-bottom: 1.5rem;
+    }
+
+    .play-btn {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .play-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Rules Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: var(--content-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal-content h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .modal-content h3 {
+      color: var(--secondary);
+      margin-top: 1.5rem;
+    }
+
+    .modal-content ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+
+    .modal-content ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .close-btn {
+      background: var(--secondary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .close-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--content-bg);
+      margin-top: 4rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        gap: 1rem;
+      }
+      .logo {
+        height: 90px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <img src="https://i.imgur.com/D8rVVgG.png" alt="Dolph-Coin Logo" class="logo">
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="dolph-about.html">About</a>
+        <a href="dolphtokenomics.html">Tokenomics</a>
+        <a href="dolphnft.html">NFTs</a>
+        <a href="dolphcontactus.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Intro Section -->
+  <div class="container">
+    <div class="intro">
+      <h2>Welcome to Dolph Coin Games</h2>
+      <p>Explore a variety of fun and exciting games where you can earn DOF tokens. Whether you're a fan of strategy, luck, or skill-based games, there's something for everyone in our underwater world.</p>
+      <p class="warning">⚠️ Warning: Play at your own risk. Please gamble responsibly and comply with all house rules.</p>
+      <a href="#" class="rules-btn" id="rulesBtn">🏆 Dolph Games House Rules</a>
+    </div>
+
+    <!-- Game Cards -->
+    <div class="card-grid">
+      <!-- Dolphin Roulette -->
+      <div class="card">
+        <img src="https://i.ibb.co/KxsxdrSk/dolphin-roulette.jpg" alt="Dolphin Roulette">
+        <h3>Dolphin Roulette</h3>
+        <p>Bet on numbers, colors, or groups and watch the underwater wheel spin!</p>
+        <a href="dolphin-roulette.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Dice Roll -->
+      <div class="card">
+        <img src="https://i.ibb.co/VYHBK04v/dolphin-dice-roll.jpg" alt="Dolphin Dice Roll">
+        <h3>Dolphin Dice Roll</h3>
+        <p>Predict the outcome of a dice roll and win based on accuracy.</p>
+        <a href="dolphin-dice-roll.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Coin Flip -->
+      <div class="card">
+        <img src="https://i.ibb.co/X6sn3DW/dolphin-coin-flip.jpg" alt="Dolphin Coin Flip">
+        <h3>Dolphin Coin Flip</h3>
+        <p>A classic 50/50 betting game where users pick heads or tails.</p>
+        <a href="dolphin-coin-flip.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Plinko -->
+      <div class="card">
+        <img src="https://i.ibb.co/dJ0jrfnv/dolphin-plinko.jpg" alt="Dolphin Plinko">
+        <h3>Dolphin Plinko</h3>
+        <p>Drop DOF tokens through a pegboard and land on multipliers.</p>
+        <a href="dolphin-plinko.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Crash -->
+      <div class="card">
+        <img src="https://i.ibb.co/kgqDx3TB/dolphin-crash.jpg" alt="Dolphin Crash">
+        <h3>Dolphin Crash</h3>
+        <p>Bet on a rising multiplier and cash out before the wave crashes!</p>
+        <a href="dolphin-crash.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Blackjack -->
+      <div class="card">
+        <img src="https://i.ibb.co/5xCWFv1y/dolphin-blackjack.jpg" alt="Dolphin Blackjack">
+        <h3>Dolphin Blackjack</h3>
+        <p>Play against the dealer and aim for 21 to win DOF tokens.</p>
+        <a href="dolphin-blackjack.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Poker -->
+      <div class="card">
+        <img src="https://i.ibb.co/sdLjPr6F/dolphin-poker.jpg" alt="Dolphin Poker">
+        <h3>Dolphin Poker</h3>
+        <p>A Texas Hold'em-style poker game with DOF token bets.</p>
+        <a href="dolphin-poker.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Lottery -->
+      <div class="card">
+        <img src="https://i.ibb.co/PzmsTHJn/dolphin-lottery.jpg" alt="Dolphin Lottery">
+        <h3>Dolphin Lottery</h3>
+        <p>Players buy tickets, and a random draw decides the winner.</p>
+        <a href="dolphin-lottery.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Wheel of Fortune -->
+      <div class="card">
+        <img src="https://i.ibb.co/d44DTX6D/dolphin-wheel-of-fortune.jpg" alt="Dolphin Wheel of Fortune">
+        <h3>Dolphin Wheel of Fortune</h3>
+        <p>Spin a wheel with different DOF multipliers and rewards.</p>
+        <a href="dolphin-wheel-of-fortune.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Run -->
+      <div class="card">
+        <img src="https://i.ibb.co/mCq3R72Z/dolphin-run.jpg" alt="Dolphin Run">
+        <h3>Dolphin Run</h3>
+        <p>Dive into the ocean and collect DOF tokens while avoiding obstacles in this fast-paced endless runner game.</p>
+        <a href="dolphin-run.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Tycoon -->
+      <div class="card">
+        <img src="https://i.ibb.co/B5s1zDwz/dolphin-tycoon.jpg" alt="Dolphin Tycoon">
+        <h3>Dolphin Tycoon</h3>
+        <p>Build and manage your underwater empire. Expand your coral reef, attract sea creatures, and earn DOF rewards.</p>
+        <a href="dolphin-tycoon.html" class="play-btn">Play Now</a>
+      </div>
+      <!-- Dolphin Slot Machine -->
+      <div class="card">
+        <img src="https://i.ibb.co/jkwmWCx7/dolphin-slot.jpg" alt="Dolphin Slot Machine">
+        <h3>Dolphin Slot Machine</h3>
+        <p>Spin the reels and win big with DOF tokens! This fun and interactive slot machine game offers exciting bonuses and jackpots.</p>
+        <a href="dolphin-slot-machine.html" class="play-btn">Play Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rules Modal -->
+  <div class="modal" id="rulesModal">
+    <div class="modal-content">
+      <h2>🏆 Dolph Games House Rules 🏆</h2>
+      <p><strong>Effective Date:</strong> [Insert Date]</p>
+      <p>Welcome to Dolph Games, the official gaming hub of DolphCoin (DOF). By participating, you agree to follow these rules to maintain a fair and enjoyable experience for all players.</p>
+
+      <h3>1️⃣ General Rules</h3>
+      <ul>
+        <li><strong>Fair Play:</strong> Cheating, exploiting, or using automated bots is strictly prohibited.</li>
+        <li><strong>Age Requirement:</strong> Players must be 18+ to participate in any betting or wagering games.</li>
+        <li><strong>One Account Per Player:</strong> Multi-accounting or identity fraud is not allowed.</li>
+        <li><strong>Respect the Community:</strong> Toxic behavior, harassment, or hate speech will result in bans.</li>
+      </ul>
+
+      <h3>2️⃣ Betting & Wagering Rules</h3>
+      <ul>
+        <li><strong>Minimum & Maximum Bets:</strong> Each game has specific bet limits displayed before wagering.</li>
+        <li><strong>Final Bets:</strong> Once a bet is placed, it cannot be reversed or refunded.</li>
+        <li><strong>Odds & Payouts:</strong> All odds are algorithmically calculated and displayed before betting.</li>
+        <li><strong>Winning Payouts:</strong> Winnings are automatically credited to your wallet after a successful game.</li>
+        <li><strong>Jackpot & Bonuses:</strong> Special promotions, multipliers, and bonus rounds are subject to fair terms.</li>
+      </ul>
+
+      <h3>3️⃣ Game-Specific Rules</h3>
+      <ul>
+        <li><strong>Slot Machine:</strong> Wins are based on random reels, with wilds, scatters, and bonus rounds affecting payouts.</li>
+        <li><strong>Dice Roll:</strong> Players predict a number range, and payouts depend on accuracy.</li>
+        <li><strong>Roulette & Wheel of Fortune:</strong> Bets must be placed before the spin starts. Results are final.</li>
+        <li><strong>Blackjack & Poker:</strong> Standard card game rules apply; unfair advantage tactics are not allowed.</li>
+        <li><strong>Crash Game:</strong> Players must cash out before the wave crashes; failure to do so results in losing the bet.</li>
+      </ul>
+
+      <h3>4️⃣ Security & Fairness</h3>
+      <ul>
+        <li><strong>Provably Fair System:</strong> Games use blockchain technology for transparency.</li>
+        <li><strong>No Manual Interference:</strong> Results are 100% algorithm-driven and cannot be altered.</li>
+        <li><strong>Fraud Prevention:</strong> Suspicious accounts or activities may be reviewed, restricted, or banned.</li>
+      </ul>
+
+      <h3>5️⃣ Withdrawals & Payouts</h3>
+      <ul>
+        <li><strong>Instant Payouts:</strong> Winnings are automatically transferred to your DOF wallet.</li>
+        <li><strong>Withdrawal Limits:</strong> Certain withdrawals may require verification for security.</li>
+        <li><strong>Fees & Taxes:</strong> Transaction fees may apply depending on network congestion.</li>
+      </ul>
+
+      <h3>6️⃣ Responsible Gaming</h3>
+      <ul>
+        <li><strong>Set Limits:</strong> Players can set daily betting limits for self-control.</li>
+        <li><strong>Take Breaks:</strong> We encourage responsible gaming; seek help if needed.</li>
+        <li><strong>No Guarantees:</strong> Gambling involves risk. Play within your means!</li>
+      </ul>
+
+      <h3>7️⃣ Violations & Penalties</h3>
+      <ul>
+        <li><strong>Breaking these rules</strong> may result in temporary bans, permanent bans, or legal action.</li>
+        <li><strong>Any attempt to exploit, cheat, or abuse the system</strong> will lead to fund forfeiture.</li>
+      </ul>
+
+      <p>By playing on Dolph Games, you accept these terms and agree to a fair gaming environment. Let the fun and rewards begin! 🎮🐬💰</p>
+      <button class="close-btn" id="closeBtn">Close</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://x.com/Dolph4evaa" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.tiktok.com/@bigdolph3" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.reddit.com/user/Medium-Theme6429/" target="_blank"><i class="fab fa-reddit"></i></a>
+    </div>
+    <p>&copy; 2025 Dolph-Coin. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Modal functionality
+    const rulesBtn = document.getElementById('rulesBtn');
+    const rulesModal = document.getElementById('rulesModal');
+    const closeBtn = document.getElementById('closeBtn');
+
+    rulesBtn.addEventListener('click', () => {
+      rulesModal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      rulesModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+      if (event.target === rulesModal) {
+        rulesModal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
