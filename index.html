@@ -129,7 +129,7 @@
 
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3));
+      box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
     }
 
     .content-section {
@@ -156,7 +156,7 @@
 
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3));
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
     .crypto-price-slider {
@@ -188,7 +188,7 @@
 
     .crypto-slide:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3));
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
     .crypto-slide img {
@@ -231,7 +231,15 @@
 
     .sm-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3));
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .sm-card img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1rem;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
     .sm-card h3 {
@@ -265,7 +273,7 @@
 
     .swiper-slide:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3));
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
     .swiper-slide img {
@@ -559,7 +567,7 @@
       <a href="dolph about.html">About</a>
       <a href="dolphtokenomics.html">Tokenomics</a>
       <a href="dolphnft.html">NFTs</a>
-      <a href="dolphgames.html">Games</a> <!-- Added Games Link -->
+      <a href="dolphgames.html">Games</a>
       <a href="dolphcontactus.html">Contact</a>
       <button class="btn" onclick="connectWallet()">Connect Wallet</button>
     </nav>
@@ -569,6 +577,7 @@
     <img src="https://i.imgur.com/D8rVVgG.png" alt="Dolph-Coin Logo" class="logo">
     <h1>Welcome to Dolph-Coin (DOF)</h1>
     <div class="btn-group">
+      <button class="btn" onclick="readWhitepaper()">Whitepaper</button>
       <button class="btn" onclick="buyDOF()">Buy DOF</button>
     </div>
   </section>
@@ -682,28 +691,32 @@
     </div>
   </section>
 
-  <!-- Games Section -->
+  <!-- Updated Games Section -->
   <section class="content-section">
     <h2>Play and Earn with Dolph-Coin Games</h2>
     <div class="card-grid">
       <div class="card">
+        <img src="https://i.ibb.co/mCq3R72Z/dolphin-run.jpg" alt="Dolphin Run Game" style="width: 100%; border-radius: 15px; margin-bottom: 1rem;">
         <h3>Dolphin Run</h3>
-        <p>An exciting endless runner game where you collect DOF tokens while avoiding obstacles.</p>
+        <p>Dive into the ocean and collect DOF tokens while avoiding obstacles in this fast-paced endless runner game. Perfect for quick gaming sessions!</p>
         <a href="dolphgames.html" class="btn">Play Now</a>
       </div>
       <div class="card">
+        <img src="https://i.ibb.co/jkwmWCx7/dolphin-tycoon.jpg" alt="Dolphin Tycoon Game" style="width: 100%; border-radius: 15px; margin-bottom: 1rem;">
         <h3>Dolphin Tycoon</h3>
-        <p>Build and manage your underwater empire while earning DOF rewards.</p>
+        <p>Build and manage your underwater empire. Expand your coral reef, attract sea creatures, and earn DOF rewards as you grow your aquatic kingdom.</p>
         <a href="dolphgames.html" class="btn">Play Now</a>
       </div>
       <div class="card">
+        <img src="https://i.ibb.co/B5s1zDwz/dolphin-slot.jpg" alt="Dolphin Slot Machine Game" style="width: 100%; border-radius: 15px; margin-bottom: 1rem;">
         <h3>Dolphin Slot Machine</h3>
-        <p>Spin the reels and win DOF tokens in this fun and interactive slot machine game.</p>
+        <p>Spin the reels and win big with DOF tokens! This fun and interactive slot machine game offers exciting bonuses and jackpots.</p>
         <a href="dolphgames.html" class="btn">Play Now</a>
       </div>
     </div>
   </section>
 
+  <!-- Updated Social Media Engagement Section -->
   <section class="sm-engagement-section">
     <h2>Boost Your Social Media Presence</h2>
     <p>
@@ -711,18 +724,27 @@
     </p>
     <div class="sm-grid">
       <div class="sm-card">
+        <img src="https://i.ibb.co/xq9XDQxV/instagram.png" alt="Instagram">
         <h3>Instagram</h3>
         <p>Get real followers and likes for Instagram.</p>
       </div>
       <div class="sm-card">
+        <img src="https://i.ibb.co/S4WB6B1h/facebook.png" alt="Facebook">
+        <h3>Facebook</h3>
+        <p>Increase your Facebook likes and followers.</p>
+      </div>
+      <div class="sm-card">
+        <img src="https://i.ibb.co/fdsSc3Lp/youtube.png" alt="YouTube">
         <h3>YouTube</h3>
         <p>Increase your YouTube views and subscribers.</p>
       </div>
       <div class="sm-card">
+        <img src="https://i.ibb.co/g1kNQZq/tiktok.png" alt="TikTok">
         <h3>TikTok</h3>
         <p>Get more TikTok likes and followers.</p>
       </div>
       <div class="sm-card">
+        <img src="https://i.ibb.co/8n8KMrm2/twitter.png" alt="Twitter">
         <h3>Twitter</h3>
         <p>Grow your Twitter audience with real followers.</p>
       </div>
